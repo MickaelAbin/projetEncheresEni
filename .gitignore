@@ -96,3 +96,9 @@ replay_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/java,eclipse
 /build/
+
+#enlever servers
+/Servers
+
+#ne pas push context.xml car config differentes
+/tpEncheres/src/main/webapp/META-INF/context.xml
