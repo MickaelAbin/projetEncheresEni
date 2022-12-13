@@ -34,7 +34,7 @@ public class Article {
 	 * @param categorie
 	 */
 	public Article(int nombreArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, int prixInitial, int prixVente, Utilisateur vendeur, int categorie) {
+			LocalDate dateFinEncheres, int prixInitial, int prixVente, Utilisateur vendeur, Categorie categorie) {
 		super();
 		this.nombreArticle = nombreArticle;
 		this.nomArticle = nomArticle;
@@ -96,10 +96,10 @@ public class Article {
 	public void setNo_vendeur(Utilisateur vendeur) {
 		this.vendeur = vendeur;
 	}
-	public int getCategorie() {
+	public Categorie getCategorie() {
 		return categorie;
 	}
-	public void setNo_categorie(int categorie) {
+	public void setNo_categorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
 	

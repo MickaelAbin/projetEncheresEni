@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.encheres.bo.Article;
+import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.util.ConnectionProvider;
 
 
@@ -36,15 +37,15 @@ public class ArticleDAOjdbcImpl implements ArticleDAO{
 			
 			ResultSet rs = stmt.executeQuery(SELECT_ALL);
 			while(rs.next()) {
-				int idArticle = rs.getInt("no_article");
-				String nom = rs.getString("nom_article");
+				int idArticle = rs.getInt("nombreArticle");
+				String nom = rs.getString("nomArticle");
 				String desc = rs.getString("description");
-				Date debut = rs.getDate("date_debut_encheres", null);
-				Date fin = rs.getDate("date_fin_encheres", null);
-				int prixEntre = rs.getInt("prix_initial");
-				int prixSortie = rs.getInt("prix_vente");
-				int idVendeur = rs.getInt("no_vendeur");
-				int idCategorie = rs.getInt("no_categorie");
+				Date debut = rs.getDate("dateDebutEncheres", null);
+				Date fin = rs.getDate("dateFinEncheres", null);
+				int prixEntre = rs.getInt("prixInitial");
+				int prixSortie = rs.getInt("prixVente");
+				Utilisateur idVendeur = rs.getUtilisateur("vendeur");
+				Categorie idCategorie = rs.getInt("categorie");
 				
 				Article article = new Article(idArticle, nom, desc, debut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), fin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), prixEntre, prixSortie, idVendeur, idCategorie);
 				listes.add(article);
