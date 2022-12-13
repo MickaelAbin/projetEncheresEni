@@ -13,7 +13,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eni.encheres.bo.Articles;
+import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.util.ConnectionProvider;
 
 
@@ -21,14 +21,14 @@ import fr.eni.encheres.util.ConnectionProvider;
  * @author tgerdelat2022
  *
  */
-public class ArticlesDAOjdbcImpl implements ArticlesDAO{
+public class ArticleDAOjdbcImpl implements ArticleDAO{
 	
-private final static String SELECT_ALL = "SELECT * FROM ARTICLES_VENDUS;";
+	private final static String SELECT_ALL = "SELECT * FROM ARTICLES_VENDUS;";
 	
 	private final static String DELETE = "DELETE FROM ARTICLES_VENDUS WHERE idListe=?;";
 
-	public List<Articles> selectAll() {
-		List<Articles> listes = new ArrayList<>();
+	public List<Article> selectAll() {
+		List<Article> listes = new ArrayList<>();
 		
 		try(Connection cnx = ConnectionProvider.getConnection()) {
 			
@@ -46,7 +46,7 @@ private final static String SELECT_ALL = "SELECT * FROM ARTICLES_VENDUS;";
 				int idVendeur = rs.getInt("no_vendeur");
 				int idCategorie = rs.getInt("no_categorie");
 				
-				Articles article = new Articles(idArticle, nom, desc, debut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), fin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), prixEntre, prixSortie, idVendeur, idCategorie);
+				Article article = new Article(idArticle, nom, desc, debut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), fin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), prixEntre, prixSortie, idVendeur, idCategorie);
 				listes.add(article);
 			}
 			

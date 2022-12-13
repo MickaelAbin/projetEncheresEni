@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ez</title>
+<title>Mon Profil</title>
 </head>
 <body>
-<%@ include file="Header.html" %>
+
 </body>
 </html>
