@@ -100,5 +100,5 @@ replay_pid*
 #enlever servers
 /Servers
 
-#ne pas push context.xml car config differentes
-/tpEncheres/src/main/webapp/META-INF/context.xml
+
+
