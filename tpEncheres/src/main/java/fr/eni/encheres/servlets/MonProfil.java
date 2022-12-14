@@ -1,6 +1,7 @@
 package fr.eni.encheres.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import fr.eni.encheres.bll.UtilisateurManager;
 import fr.eni.encheres.bo.Utilisateur;
 
 /**
@@ -36,9 +39,42 @@ public class MonProfil extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String nom = request.getParameter("nom");
-		request.setAttribute("nom", nom);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/MonProfil.jsp").forward(request, response);
+		Utilisateur user = new Utilisateur(
+                request.getParameter("pseudo"),
+                request.getParameter("nom"),
+                request.getParameter("prenom"),
+                request.getParameter("email"),
+                request.getParameter("telephone"),
+                request.getParameter("rue"),
+                request.getParameter("codePostal"),
+                request.getParameter("ville"),
+                request.getParameter("motDePasse")
+                );
+		try {
+            
+	        if(UtilisateurManager.ajouterUtilisateur(user)){
+	            user = UtilisateurManager.ajouterUtilisateur(user.getPseudo());
+	            
+	            
+	            HttpSession session = request.getSession();
+	            session.setAttribute("Utilisateur", user);
+	           
+	            this.getServletContext().getRequestDispatcher("/WEB-INF/MonProfil.jsp").forward(request, response);
+	            
+	        }else {
+	            //AFFICHER ERREUR
+	        }
+	        
+	        }catch(SQLException e)
+	        {
+	            e.printStackTrace();            
+	        }catch(BllException e) {
+	            errMsg=e.getMessage();
+	            request.setAttribute("errMsg",errMsg);
+	            this.getServletContext().getRequestDispatcher("/WEB-INF/MonProfil.jsp").forward(request, response);
+	            
+	     }	    
+		
 	}
 
 }

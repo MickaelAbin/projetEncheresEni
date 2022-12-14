@@ -21,6 +21,7 @@ public class Article {
 	private int prixVente;
 	private Utilisateur vendeur;
 	private Categorie categorie;
+	private String etatVente;
 	
 	/**
 	 * @param nombreArticle
@@ -32,9 +33,10 @@ public class Article {
 	 * @param prixVente
 	 * @param vendeur
 	 * @param categorie
+	 * @param etatVente
 	 */
 	public Article(int nombreArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, int prixInitial, int prixVente, Utilisateur vendeur, Categorie categorie) {
+			LocalDate dateFinEncheres, int prixInitial, int prixVente, Utilisateur vendeur, Categorie categorie, String etatVente) {
 		super();
 		this.nombreArticle = nombreArticle;
 		this.nomArticle = nomArticle;
@@ -45,9 +47,20 @@ public class Article {
 		this.prixVente = prixVente;
 		this.vendeur = vendeur;
 		this.categorie = categorie;
+		this.etatVente = etatVente;
 	}
 	
 	
+	public String getEtatVente() {
+		return etatVente;
+	}
+
+
+	public void setEtatVente(String etatVente) {
+		this.etatVente = etatVente;
+	}
+
+
 	public int getNombreArticle() {
 		return nombreArticle;
 	}

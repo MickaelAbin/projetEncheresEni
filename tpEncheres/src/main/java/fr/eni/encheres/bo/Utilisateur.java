@@ -159,7 +159,10 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 	}
 	
-	
+
+
+
+
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
