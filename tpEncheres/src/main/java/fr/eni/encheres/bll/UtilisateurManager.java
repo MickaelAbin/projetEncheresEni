@@ -31,4 +31,8 @@ public class UtilisateurManager {
 			return DAOFactory.getUtilisateurDAO().selectById(id);
 		}
 		
+		public static void ajouterUtilisateur(Utilisateur utilisateur) {
+			DAOFactory.getUtilisateurDAO().ajouterUtilisateur(utilisateur);
+		}
+		
 }
