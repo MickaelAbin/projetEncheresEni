@@ -4,10 +4,10 @@ import fr.eni.encheres.bll.UtilisateurManager;
 import fr.eni.encheres.bo.Utilisateur;
 
 public class testUtilisateur {
-	public static void main(String[] args) {
+	public static void test() {
 		
 		//UtilisateurManager utilisateurManager = null ;
-		Utilisateur utilisateur = UtilisateurManager.selectById(3);
+		Utilisateur utilisateur = UtilisateurManager.selectById(2);
 		System.out.println(utilisateur);
 
 	}

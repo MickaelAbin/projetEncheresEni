@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.encheres.bo.Utilisateur;
+
 /**
  * Servlet implementation class Profil
  */
@@ -24,16 +26,19 @@ public class MonProfil extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/MonProfil.jsp");
-		rd.forward(request, response);
+		
+		
+		this.getServletContext().getRequestDispatcher("/WEB-INF/MonProfil.jsp").forward(request, response);
+		
+		
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	
+		String nom = request.getParameter("nom");
+		request.setAttribute("nom", nom);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/MonProfil.jsp").forward(request, response);
 	}
 
 }
