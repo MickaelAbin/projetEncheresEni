@@ -12,7 +12,6 @@ import java.util.List;
 import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.bo.Enchere;
 import fr.eni.encheres.bo.Utilisateur;
-import fr.eni.encheres.util.ConnectionProvider;
 
 public class EnchereDAOJdbcImpl implements EnchereDAO {
 	

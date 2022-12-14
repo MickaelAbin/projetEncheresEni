@@ -7,7 +7,7 @@ public class testUtilisateur {
 	public static void main(String[] args) {
 		
 		//UtilisateurManager utilisateurManager = null ;
-		Utilisateur utilisateur = UtilisateurManager.selectById(2);
+		Utilisateur utilisateur = UtilisateurManager.selectById(3);
 		System.out.println(utilisateur);
 
 	}

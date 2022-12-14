@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.encheres.bo.Utilisateur;
-import fr.eni.encheres.util.ConnectionProvider;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private final static String SELECT_ALL = "Select * from Utilisateur";

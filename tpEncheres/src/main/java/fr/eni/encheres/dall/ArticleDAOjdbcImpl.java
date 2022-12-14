@@ -15,7 +15,6 @@ import java.util.List;
 
 import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.bo.Utilisateur;
-import fr.eni.encheres.util.ConnectionProvider;
 
 
 /**
@@ -45,7 +44,7 @@ public class ArticleDAOjdbcImpl implements ArticleDAO{
 				int prixEntre = rs.getInt("prixInitial");
 				int prixSortie = rs.getInt("prixVente");
 				Utilisateur idVendeur = rs.getUtilisateur("vendeur");
-				Categorie idCategorie = rs.getInt("categorie");
+				Categorie idCategorie = rs.getCategorie("categorie");
 				
 				Article article = new Article(idArticle, nom, desc, debut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), fin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), prixEntre, prixSortie, idVendeur, idCategorie);
 				listes.add(article);
