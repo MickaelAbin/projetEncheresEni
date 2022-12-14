@@ -27,4 +27,8 @@ public class UtilisateurManager {
 			DAOFactory.getUtilisateurDAO().delete(idListe);
 		}
 		
+		public static Utilisateur selectById(int id) {
+			return DAOFactory.getUtilisateurDAO().selectById(id);
+		}
+		
 }

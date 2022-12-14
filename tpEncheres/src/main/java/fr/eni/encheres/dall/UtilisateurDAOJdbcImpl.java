@@ -14,7 +14,7 @@ import fr.eni.encheres.util.ConnectionProvider;
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private final static String SELECT_ALL = "Select * from Utilisateur";
 	private final static String DELETE = "DELETE FROM Utilisateur WHERE id=?;";
-
+	private final static String SELECT_BY_ID = "Select * FROM Utilisateur WHERE id=?;";
 	
 	public List<Utilisateur> selectAll() {
         List<Utilisateur> listes = new ArrayList<>();
@@ -51,5 +51,34 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			e.printStackTrace();
 		}
 		
+	}
+
+
+	
+	public Utilisateur selectById(int id) {
+		Utilisateur utilisateur = null;
+		try(Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pStmt = cnx.prepareStatement(SELECT_BY_ID);
+			pStmt.setInt(1, id);
+			pStmt.executeUpdate();
+			Statement stmt = cnx.createStatement();
+            ResultSet rs = stmt.executeQuery(SELECT_BY_ID);
+            
+            int idUtilisateur = rs.getInt("no_utilisateur");
+            String pseudo = rs.getString("pseudo");
+            String nom = rs.getString("nom");
+            String prenom = rs.getString("prenom");
+            String email = rs.getString("email");
+            String telephone = rs.getString("telephone");
+            String rue = rs.getString("rue");
+            String codePostal = rs.getString("code_postal");
+            String ville = rs.getString("ville");
+            
+            utilisateur = new Utilisateur(idUtilisateur, pseudo, nom, prenom,email,telephone,rue,codePostal,ville);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		return utilisateur;
 	}
 }
