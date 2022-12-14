@@ -113,4 +113,37 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		}
 	}
 	
+	public Utilisateur verificationIdentifiant(String identifiant) {
+		Utilisateur identifiantTrouve = null;
+		try(Connection cnx = ConnectionProvider.getConnection()) {
+            Statement stmt = cnx.createStatement();
+            ResultSet rs = stmt.executeQuery(SELECT_ALL);
+            while(rs.next()) {
+            	if (rs.getString("pseudo").equals(identifiant)) {
+                    String pseudo = rs.getString("pseudo");
+                    String motDePasse = rs.getString("mot_de_passe");
+                    
+                    identifiantTrouve = new Utilisateur(pseudo, motDePasse);
+                    
+				}
+            	
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		return identifiantTrouve;
+	}
+	
+	public Utilisateur verificationMotDePasse(Utilisateur utilisateur, String motDePasse) {
+		
+		Utilisateur utilisateurConnecter = null;
+		
+		if (utilisateur.getMotDePasse().equals(motDePasse)) {
+			utilisateurConnecter = utilisateur;
+		}
+		
+		return utilisateurConnecter;
+		
+	}
+	
 }
