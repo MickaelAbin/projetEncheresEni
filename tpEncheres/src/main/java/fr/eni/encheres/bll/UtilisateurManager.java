@@ -34,7 +34,7 @@ public class UtilisateurManager {
 		}
 		
 		public static void ajouterUtilisateur(Utilisateur utilisateur) {
-			DAOFactory.getUtilisateurDAO().ajouterUtilisateur(utilisateur);
+			DAOFactory.getUtilisateurDAO().insert(utilisateur);
 		}
 		
 		public static void connexionUtilisateur(Utilisateur utilisateur) {

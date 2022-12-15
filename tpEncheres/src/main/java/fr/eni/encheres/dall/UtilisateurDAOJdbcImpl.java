@@ -14,19 +14,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private final static String SELECT_ALL = "Select * from Utilisateur";
 	private final static String DELETE = "DELETE FROM Utilisateur WHERE id=?;";
 	private final static String SELECT_BY_ID = "Select * FROM Utilisateur WHERE id=?;";
-	private final static String AJOUTER_UTILISATEUR = "Insert into Utilisateur values ("
-			+ "pseudo=?,"
-			+ "nom=?,"
-			+ "prenom=?,"
-			+ "email=?,"
-			+ "telephone=?,"
-			+ "rue=?,"
-			+ "code_postal=?,"
-			+ "ville=?,"
-			+ "mot_de_passe=?,"
-			+ "credit=0,"
-			+ "administrateur=0);"
-			;
+	private final static String AJOUTER_UTILISATEUR = "insert into UTILISATEURS values (?,?,?,?,?,?,?,?,?,0,1);";
 	
 	public List<Utilisateur> selectAll() {
         List<Utilisateur> listes = new ArrayList<>();
@@ -95,7 +83,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	}
 	
 	//manque ajout de controle dans la BDD que email et pseudo ne soient pas deja présent 
-	public void ajouterUtilisateur(Utilisateur utilisateur) {
+	public void insert(Utilisateur utilisateur) {
 		try(Connection cnx = ConnectionProvider.getConnection()) {
 			PreparedStatement pStmt = cnx.prepareStatement(AJOUTER_UTILISATEUR);
 			pStmt.setString(1, utilisateur.getPseudo());

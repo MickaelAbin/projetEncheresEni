@@ -8,4 +8,5 @@ public interface UtilisateurDAO {
 	List<Utilisateur> selectAll();
 	void delete(int id);
 	Utilisateur selectById(int id);
+	void insert(Utilisateur utilisateur);
 }

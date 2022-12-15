@@ -39,7 +39,7 @@ public class ServletsMonProfil extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		Utilisateur user = new Utilisateur(
+		Utilisateur utilisateur = new Utilisateur(
                request.getParameter("pseudo"),
                request.getParameter("nom"),
                request.getParameter("prenom"),
@@ -48,17 +48,18 @@ public class ServletsMonProfil extends HttpServlet {
                request.getParameter("rue"),
                request.getParameter("codePostal"),
                request.getParameter("ville"),
-               request.getParameter("motDePasse"),
-               0
+               request.getParameter("motDePasse")
                );
-		try {
-			Utilisateur user = UtilisateurManager.getInstance().ajouterUtilisateur(user, user);
-			utilisateurManager.ajouterUtilisateur(user);
+		   /*
+			UtilisateurManager utilisateurManager = new UtilisateurManager();
+			UtilisateurManager.ajouterUtilisateur(utilisateur);
+			*/
+		
+		UtilisateurManager.getInstance().ajouterUtilisateur(utilisateur);
+	
+	
 			
-		}catch
-		{
-			
-		}
+		
 		
 	}
 
