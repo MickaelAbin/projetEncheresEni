@@ -34,14 +34,16 @@ public class ServletNouvelleVente extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Article article = new Article(
-	               request.getParameter("article"),
-	               request.getParameter("description"),
-	               request.getParameter("DateDebut"),
-	               request.getParameter("DateFin"),
-	               request.getParameter("PRIX"),
-	               request.getParameter("categorie")
-	               );
+		
+	         String article = request.getParameter("article");
+	         String description = request.getParameter("description");
+	         String dateDebut = request.getParameter("DateDebut");
+	         String dateFin = request.getParameter("DateFin");
+	         String prix = request.getParameter("PRIX");
+	         String categorie = request.getParameter("categorie");
+	          // TODO allez chercher idVendeur de la session  
+	         
+	         Article article = new Article(article,description,dateDebut,dateFin,prix,categorie);
 			   /*
 				UtilisateurManager utilisateurManager = new UtilisateurManager();
 				UtilisateurManager.ajouterUtilisateur(utilisateur);

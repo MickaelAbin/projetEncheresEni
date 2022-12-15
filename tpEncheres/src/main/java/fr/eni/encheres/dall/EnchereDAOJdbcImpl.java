@@ -26,8 +26,8 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 				ResultSet rs = stmt.executeQuery(SELECT_ALL);
 				while(rs.next()) {
 					int numeroEnchere = rs.getInt("no_enchere");
-					Utilisateur acheteur = rs.getInt("no_acheteur");
-					Article article = rs.getInt("no_article ");	
+					int acheteur = rs.getInt("no_acheteur");
+					int article = rs.getInt("no_article ");	
 					Date dateEnchere = rs.getDate("date_enchere");
 					int montantEnchere = rs.getInt("montant_enchere");
 					Enchere uneEnchere = new Enchere(numeroEnchere,acheteur,article,dateEnchere,montantEnchere);

@@ -21,4 +21,10 @@ public class DAOFactory {
 	public static UtilisateurDAOJdbcImpl getUtilisateurDAO() {
 		return new UtilisateurDAOJdbcImpl();
 	}
+	public static UtilisateurDAOJdbcImpl getCategorieDAO() {
+		return new UtilisateurDAOJdbcImpl();
+	}
+	public static UtilisateurDAOJdbcImpl getRetraitDAO() {
+		return new UtilisateurDAOJdbcImpl();
+	}
 }
