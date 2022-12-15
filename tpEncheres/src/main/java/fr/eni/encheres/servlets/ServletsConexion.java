@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/Conexion")
-public class Conexion extends HttpServlet {
+public class ServletsConexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	public Conexion() {
+	public ServletsConexion() {
         super();
         // TODO Auto-generated constructor stub
     }

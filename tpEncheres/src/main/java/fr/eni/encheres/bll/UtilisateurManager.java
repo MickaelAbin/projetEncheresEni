@@ -16,7 +16,7 @@ public class UtilisateurManager {
 			return instance;
 		}
 		
-		private UtilisateurManager() { }
+		public UtilisateurManager() { }
 		
 		public List<Utilisateur> selectAll() {
 			return DAOFactory.getUtilisateurDAO().selectAll();
