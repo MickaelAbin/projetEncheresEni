@@ -2,8 +2,6 @@ package fr.eni.encheres.bll;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dall.DAOFactory;
 
@@ -33,31 +31,29 @@ public class UtilisateurManager {
 			return DAOFactory.getUtilisateurDAO().selectById(id);
 		}
 		
-		public static void ajouterUtilisateur(Utilisateur utilisateur) {
+		public void ajouterUtilisateur(Utilisateur utilisateur) {
 			DAOFactory.getUtilisateurDAO().insert(utilisateur);
 		}
 		
-		public static void connexionUtilisateur(Utilisateur utilisateur) {
+		public static String connexionUtilisateur(Utilisateur utilisateur) {
 			String identifiant = utilisateur.getPseudo();
 			Utilisateur utilisateurConnecte = DAOFactory.getUtilisateurDAO().verificationIdentifiant(identifiant);
 			String motDePasse = utilisateurConnecte.getMotDePasse();
-			HttpSession utilisateurEnSession;
+			String messageConnexion = "Identifiant invalide";
 			
 			if (!(utilisateurConnecte == null)) {
 				Utilisateur utilisateurVerifiMotDePasse = DAOFactory.getUtilisateurDAO().verificationMotDePasse(utilisateurConnecte, motDePasse);
 				if (!(utilisateurVerifiMotDePasse == null)) {
-					//pseudo et mot de passe valide 
-					
+					messageConnexion = "Connexion valide";
 					
 				}
 				else {
-					//mot de passe incorrect
+					messageConnexion = "Mot de passe invalide";
 				}
 				
 			}
-			else {
-				//pseudo non existant
-			}
+			
+			return messageConnexion;
 		}
 		
 }

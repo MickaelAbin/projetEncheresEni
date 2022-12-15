@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.encheres.bll.UtilisateurManager;
 import fr.eni.encheres.bo.Utilisateur;
@@ -36,11 +37,20 @@ public class Connexion extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		Utilisateur utilisateurConnexion = new Utilisateur(
 				request.getParameter("identifiant"),
 				request.getParameter("motDePasse")
 				);
-		//UtilisateurManager.ajouterUtilisateur(utilisateurConnexion);
+		String messageConnexion = UtilisateurManager.connexionUtilisateur(utilisateurConnexion);
+		
+		if(messageConnexion.equals("Connexion valide")) {
+			session.setAttribute(messageConnexion, messageConnexion);
+			request.setAttribute("messageConnexion", messageConnexion);
+			request.getRequestDispatcher("/WEB-INF/Accueil.jsp").forward(request, response);
+			
+		}
+		
 	}
 
 }
