@@ -43,13 +43,23 @@ public class Connexion extends HttpServlet {
 				request.getParameter("motDePasse")
 				);
 		String messageConnexion = UtilisateurManager.connexionUtilisateur(utilisateurConnexion);
+		request.setAttribute("messageConnexion", messageConnexion);
 		
+		Utilisateur utilisateurConnecte = null;
 		if(messageConnexion.equals("Connexion valide")) {
-			session.setAttribute(messageConnexion, messageConnexion);
-			request.setAttribute("messageConnexion", messageConnexion);
-			request.getRequestDispatcher("/WEB-INF/Accueil.jsp").forward(request, response);
-			
+			utilisateurConnecte = UtilisateurManager.selectByPseudo(utilisateurConnexion.getPseudo());
+			session.setAttribute("utilisateurConnecte", utilisateurConnecte);
+			response.sendRedirect("/tpEncheres/Accueil");
+			//request.getRequestDispatcher("/WEB-INF/Accueil.jsp").FORWARD_SERVLET_PATH;
+			//this.getServletContext().getRequestDispatcher("/WEB-INF/MonProfil.jsp").forward(request, response);
 		}
+		else {
+			doGet(request, response);
+		}
+		
+
+		
+		
 		
 	}
 

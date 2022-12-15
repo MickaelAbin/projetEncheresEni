@@ -38,16 +38,16 @@ public class UtilisateurManager {
 		public static String connexionUtilisateur(Utilisateur utilisateur) {
 			String identifiant = utilisateur.getPseudo();
 			Utilisateur utilisateurConnecte = DAOFactory.getUtilisateurDAO().verificationIdentifiant(identifiant);
-			String motDePasse = utilisateurConnecte.getMotDePasse();
+			String motDePasse = utilisateur.getMotDePasse();
 			String messageConnexion = "Identifiant invalide";
 			
-			if (!(utilisateurConnecte == null)) {
+			
+			if ((utilisateurConnecte != null)) {
 				Utilisateur utilisateurVerifiMotDePasse = DAOFactory.getUtilisateurDAO().verificationMotDePasse(utilisateurConnecte, motDePasse);
 				if (!(utilisateurVerifiMotDePasse == null)) {
 					messageConnexion = "Connexion valide";
 					
-				}
-				else {
+				}else {
 					messageConnexion = "Mot de passe invalide";
 				}
 				
@@ -56,4 +56,7 @@ public class UtilisateurManager {
 			return messageConnexion;
 		}
 		
+		public static Utilisateur selectByPseudo(String pseudo) {
+			return DAOFactory.getUtilisateurDAO().selectByPseudo(pseudo);
+		}
 }

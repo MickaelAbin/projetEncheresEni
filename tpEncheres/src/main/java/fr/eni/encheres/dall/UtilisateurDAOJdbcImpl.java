@@ -11,10 +11,11 @@ import java.util.List;
 import fr.eni.encheres.bo.Utilisateur;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
-	private final static String SELECT_ALL = "Select * from Utilisateur";
-	private final static String DELETE = "DELETE FROM Utilisateur WHERE id=?;";
-	private final static String SELECT_BY_ID = "Select * FROM Utilisateur WHERE id=?;";
-	private final static String AJOUTER_UTILISATEUR = "insert into UTILISATEURS values (?,?,?,?,?,?,?,?,?,0,1);";
+	private final static String SELECT_ALL = "Select * from Utilisateurs";
+	private final static String DELETE = "DELETE FROM Utilisateurs WHERE id=?;";
+	private final static String SELECT_BY_ID = "Select * FROM Utilisateurs WHERE id=?;";
+	private final static String AJOUTER_UTILISATEUR = "insert into UTILISATEURS values (?,?,?,?,?,?,?,?,?,0,0);";
+	private final static String SELECT_BY_PSEUDO = "Select * FROM Utilisateurs WHERE pseudo=?;";
 	
 	public List<Utilisateur> selectAll() {
         List<Utilisateur> listes = new ArrayList<>();
@@ -107,6 +108,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
             Statement stmt = cnx.createStatement();
             ResultSet rs = stmt.executeQuery(SELECT_ALL);
             while(rs.next()) {
+
             	if (rs.getString("pseudo").equals(identifiant)) {
                     String pseudo = rs.getString("pseudo");
                     String motDePasse = rs.getString("mot_de_passe");
@@ -119,6 +121,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+		//System.out.println(identifiantTrouve.getPseudo());
 		return identifiantTrouve;
 	}
 	
@@ -131,6 +134,33 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		}
 		
 		return utilisateurConnecter;
+		
+	}
+	
+	public Utilisateur selectByPseudo(String pseudo) {
+		Utilisateur utilisateur = null;
+		try(Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pStmt = cnx.prepareStatement(SELECT_BY_PSEUDO);
+			pStmt.setString(1, pseudo);
+			pStmt.executeUpdate();
+			Statement stmt = cnx.createStatement();
+            ResultSet rs = stmt.executeQuery(SELECT_BY_PSEUDO);
+            
+            int idUtilisateur = rs.getInt("no_utilisateur");
+            String nom = rs.getString("nom");
+            String prenom = rs.getString("prenom");
+            String email = rs.getString("email");
+            String telephone = rs.getString("telephone");
+            String rue = rs.getString("rue");
+            String codePostal = rs.getString("code_postal");
+            String ville = rs.getString("ville");
+            
+            utilisateur = new Utilisateur(idUtilisateur, pseudo, nom, prenom,email,telephone,rue,codePostal,ville);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		return utilisateur;
 		
 	}
 	
