@@ -52,7 +52,7 @@ public class ServletsMonProfil extends HttpServlet {
                0
                );
 		try {
-			UtilisateurManager utilisateurManager = new UtilisateurManager();
+			Utilisateur user = UtilisateurManager.getInstance().ajouterUtilisateur(user, user);
 			utilisateurManager.ajouterUtilisateur(user);
 			
 		}catch
