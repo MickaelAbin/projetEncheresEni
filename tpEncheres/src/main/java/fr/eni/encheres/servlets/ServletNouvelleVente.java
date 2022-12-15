@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.encheres.bll.UtilisateurManager;
+import fr.eni.encheres.bo.Article;
+import fr.eni.encheres.bo.Utilisateur;
+
 
 @WebServlet("/NouvelleVente")
 public class ServletNouvelleVente extends HttpServlet {
@@ -30,9 +34,23 @@ public class ServletNouvelleVente extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		Article article = new Article(
+	               request.getParameter("article"),
+	               request.getParameter("description"),
+	               request.getParameter("DateDebut"),
+	               request.getParameter("DateFin"),
+	               request.getParameter("PRIX"),
+	               request.getParameter("categorie")
+	               );
+			   /*
+				UtilisateurManager utilisateurManager = new UtilisateurManager();
+				UtilisateurManager.ajouterUtilisateur(utilisateur);
+				*/
+			
+			UtilisateurManager.getInstance().ajouterUtilisateur(utilisateur);
 		doGet(request, response);
-		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/NouvelleVente.jsp");
+		rd.forward(request, response);
 		
 	}
 	

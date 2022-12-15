@@ -21,7 +21,7 @@
 <body>
 	<%@ include file="Header.jsp"%>
 
-	<form action="" method="post">
+	<form action="<%=request.getContextPath()%>/ServletNouvelleVente"  method="POST">
 		Article : <input type="text" name="article"> <br> <br>
 
 		Description :
@@ -29,7 +29,7 @@
 	</textarea>
 		<br> <br> Catégorie :
 		<div class="dropdown">
-			<button class="btn btn-secondary dropdown-toggle" type="button"
+			<button class="btn btn-secondary dropdown-toggle" type="button" name="categorie"
 				data-bs-toggle="dropdown" aria-expanded="false">Categorie</button>
 			<ul class="dropdown-menu">
 				<li><a class="dropdown-item" href="#">Maison</a></li>
@@ -42,9 +42,9 @@
 		<label for="tentacles">Mise à prix:</label> <input type="number"
 			name="PRIX" step="5" min="0" max="1000"> <br> <br>
 
-		Début de l'enchère : <input type="date" name="dateAjout"
+		Début de l'enchère : <input type="date" name="dateDebut"
 			value="2022-07-22" min="2018-01-01" max="2018-12-31"> <br>
-		<br> Fin de l'enchère : <input type="date" name="dateAjout"
+		<br> Fin de l'enchère : <input type="date" name="dateFin"
 			value="2022-07-22" min="2018-01-01" max="2018-12-31"> <br>
 		<br>
 		<fieldset>

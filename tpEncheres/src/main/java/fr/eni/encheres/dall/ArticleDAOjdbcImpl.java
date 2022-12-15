@@ -43,8 +43,8 @@ public class ArticleDAOjdbcImpl implements ArticleDAO{
 				Date fin = rs.getDate("dateFinEncheres", null);
 				int prixEntre = rs.getInt("prixInitial");
 				int prixSortie = rs.getInt("prixVente");
-				Utilisateur idVendeur = rs.getUtilisateur("vendeur");
-				Categorie idCategorie = rs.getCategorie("categorie");
+				int idVendeur = rs.getInt("vendeur");
+				int idCategorie = rs.getInt("categorie");
 				
 				Article article = new Article(idArticle, nom, desc, debut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), fin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), prixEntre, prixSortie, idVendeur, idCategorie);
 				listes.add(article);

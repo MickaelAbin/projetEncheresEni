@@ -23,6 +23,28 @@ public class Article {
 	private Categorie categorie;
 	private String etatVente;
 	
+	
+	
+	/**
+	 * @param nomArticle
+	 * @param description
+	 * @param dateDebutEncheres
+	 * @param dateFinEncheres
+	 * @param prixInitial
+	 * @param categorie
+	 */
+	public Article(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
+			int prixInitial, Categorie categorie) {
+	
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.prixInitial = prixInitial;
+		this.categorie = categorie;
+	}
+
+
 	/**
 	 * @param nombreArticle
 	 * @param nomArticle
