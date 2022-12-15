@@ -6,6 +6,7 @@ package fr.eni.encheres.bll;
 import java.util.List;
 
 import fr.eni.encheres.bo.Article;
+import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dall.DAOFactory;
 
 
@@ -32,5 +33,8 @@ private static ArticleManager instance;
 	public void delete(int idListe) {
 		//TODO: vérification des données
 		DAOFactory.getArticlesDAO().delete(idListe);
+	}
+	public void ajouterArticle(Article article) {
+		DAOFactory.getUtilisateurDAO().insert(article);
 	}
 }

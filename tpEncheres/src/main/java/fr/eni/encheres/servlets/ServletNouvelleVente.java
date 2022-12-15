@@ -1,6 +1,7 @@
 package fr.eni.encheres.servlets;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,8 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.encheres.bll.ArticleManager;
 import fr.eni.encheres.bll.UtilisateurManager;
 import fr.eni.encheres.bo.Article;
+import fr.eni.encheres.bo.Retrait;
 import fr.eni.encheres.bo.Utilisateur;
 
 
@@ -35,21 +38,33 @@ public class ServletNouvelleVente extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	         String article = request.getParameter("article");
+	         String nomArticle = request.getParameter("article");
 	         String description = request.getParameter("description");
 	         String dateDebut = request.getParameter("DateDebut");
 	         String dateFin = request.getParameter("DateFin");
 	         String prix = request.getParameter("PRIX");
 	         String categorie = request.getParameter("categorie");
 	          // TODO allez chercher idVendeur de la session  
+	         LocalDate dateDeb = null;
+	         dateDeb = LocalDate.parse(dateDebut);
+	         LocalDate dateF = null;
+	         dateF = LocalDate.parse(dateDebut);
+	         int prixf = Integer.parseInt(prix);
+	 			
+	         Article article = new Article(nomArticle,description,dateDeb,dateF,prixf);
 	         
-	         Article article = new Article(article,description,dateDebut,dateFin,prix,categorie);
+	         String rue = request.getParameter("rue");
+	         String codePostal = request.getParameter("codePostal");
+	         String ville = request.getParameter("ville");
+             
+	         Retrait retrait = new Retrait(rue,codePostal,ville);
+	         
 			   /*
 				UtilisateurManager utilisateurManager = new UtilisateurManager();
 				UtilisateurManager.ajouterUtilisateur(utilisateur);
 				*/
 			
-			UtilisateurManager.getInstance().ajouterUtilisateur(utilisateur);
+			ArticleManager.getInstance().ajouterArticle(article);
 		doGet(request, response);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/NouvelleVente.jsp");
 		rd.forward(request, response);
