@@ -45,15 +45,20 @@
 	<input type="text" name="codePostal" id="telephone" required />
 	<br />
 	<br />
-	<label for="nom">ville : </label>
+	<label for="nom">Ville : </label>
 	<input type="text" name="ville" id="ville" required />
 	<br />
 	<br />
 	<label for="nom">Mot de passe : </label>
-	<input type="text" name="motDePasse" id="motDePasse" required />
+	<input type="password" name="motDePasse" id="motDePasse" required />
+	<br />
+	<br />
+	<label for="nom">Confirmation : </label>
+	<input type="password" name="remotDePasse" id="remotDePasse" required />
 	<br />
 	<br />
 	<input type="submit" name="creer" />
+	<input type="reset" value="Annuler">
 	
 </form>
 </fieldset>
