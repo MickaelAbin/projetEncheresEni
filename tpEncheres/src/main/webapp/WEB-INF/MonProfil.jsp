@@ -10,8 +10,8 @@
 <body>
 <%@ include file="MonProfil.html" %>
 
+  <fieldset>
 
-<fieldset>
   <legend><h2>Inscription</h2></legend>
   
 
@@ -59,8 +59,11 @@
 	<br />
 	<input type="submit" name="creer" />
 	<input type="reset" value="Annuler">
+	<a href="/tpEncheres/Accueil">Accueil</a>
+	<br />
+	
 	
 </form>
-</fieldset>
+
 </body>
 </html>

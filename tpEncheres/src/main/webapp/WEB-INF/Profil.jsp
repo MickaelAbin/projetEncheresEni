@@ -9,7 +9,10 @@
     <title>Profile Page</title>    
 </head>
 <body>
+<fieldset>
 	<h1>Profil</h1>
+	
+	
 	<c:if test="${!empty sessionScope.utilisateur }"></c:if>
 	<p> Pseudo : ${utilisateur.pseudo } </p>
 	<p> Nom : ${utilisateur.nom } </p>
@@ -19,6 +22,7 @@
 	<p> Rue : ${utilisateur.rue } </p>
 	<p> Code Postal : ${utilisateur.codePostal } </p>
 	<p> Ville : ${utilisateur.ville } </p>
-	<a href="/tpEncheres/NouvelleVente">Retour</a>
+	<a href="/tpEncheres/Accueil">Accueil</a>
+	
 </body>
 </html>
