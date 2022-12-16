@@ -45,7 +45,7 @@ public class ServletsMonProfil extends HttpServlet {
 	     UtilisateurManager.getInstance().ajouterUtilisateur(utilisateur);
                 
                 HttpSession session = request.getSession();
-                session.setAttribute("tilisateur",utilisateur);
+                session.setAttribute("utilisateur",utilisateur);
 
 
 
