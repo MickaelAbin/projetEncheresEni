@@ -80,5 +80,6 @@
 	</form>
 
 	</div>
+	<a href="/tpEncheres/Accueil">Accueil</a>
 </body>
 </html>

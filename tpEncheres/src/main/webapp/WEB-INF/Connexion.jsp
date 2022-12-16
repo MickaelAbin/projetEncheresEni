@@ -25,5 +25,6 @@
 	
 	<div><%=application.getAttribute("messageConnexion") %></div>
 	<input type="button" action="<%=request.getContextPath()%>/MonProfil"  method="GET" value="Créer un compte">
+	<a href="/tpEncheres/Accueil">Accueil</a>
 </body>
 </html>
