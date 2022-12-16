@@ -44,12 +44,20 @@ public class Connexion extends HttpServlet {
 				);
 		String messageConnexion = UtilisateurManager.connexionUtilisateur(utilisateurConnexion);
 		request.setAttribute("messageConnexion", messageConnexion);
+		String pseudo = utilisateurConnexion.getPseudo();
+		
+		session.setAttribute("testUtilisateur", utilisateurConnexion);
 		
 		Utilisateur utilisateurConnecte = null;
 		if(messageConnexion.equals("Connexion valide")) {
-			utilisateurConnecte = UtilisateurManager.selectByPseudo(utilisateurConnexion.getPseudo());
+			utilisateurConnecte = UtilisateurManager.selectByPseudo(pseudo);
+			try {
+				
+				session.setAttribute("utilisateurConnecte", utilisateurConnecte);
+			} catch (Exception e) {
+				
+			}
 			
-			session.setAttribute("utilisateurConnecte", utilisateurConnecte);
 			response.sendRedirect("/tpEncheres/Accueil");
 			//request.getRequestDispatcher("/WEB-INF/Accueil.jsp").FORWARD_SERVLET_PATH;
 			//this.getServletContext().getRequestDispatcher("/WEB-INF/MonProfil.jsp").forward(request, response);

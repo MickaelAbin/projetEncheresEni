@@ -57,6 +57,8 @@ public class UtilisateurManager {
 		}
 		
 		public static Utilisateur selectByPseudo(String pseudo) {
-			return DAOFactory.getUtilisateurDAO().selectByPseudo(pseudo);
+			Utilisateur utilisateur =  DAOFactory.getUtilisateurDAO().selectByPseudo(pseudo);
+			
+			return utilisateur;
 		}
 }

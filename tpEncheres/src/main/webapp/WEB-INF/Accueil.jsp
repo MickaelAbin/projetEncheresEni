@@ -23,6 +23,8 @@
 	<%@ include file="Header.jsp"%>
 	<c:if test="${!empty test}">
 		<div> Message : ${requestScope.test.pseudo}</div>
+		<p>pseudo : ${sessionScope.utilisateurConnecte.pseudo}</p>
+		<p>test du session : ${sessionScope.testUtilisateur.pseudo }</p>
 	</c:if>
 
 </body>

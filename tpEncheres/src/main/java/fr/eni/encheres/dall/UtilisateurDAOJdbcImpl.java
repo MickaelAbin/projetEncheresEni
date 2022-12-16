@@ -136,30 +136,69 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 
 	public Utilisateur selectByPseudo(String pseudo) {
+		PreparedStatement pStmt = null;
+		ResultSet rs = null;
 		
 		Utilisateur utilisateur = null;
 		try(Connection cnx = ConnectionProvider.getConnection()) {
-			PreparedStatement pStmt = cnx.prepareStatement(SELECT_BY_PSEUDO);
+			pStmt = cnx.prepareStatement(SELECT_BY_PSEUDO);
 			pStmt.setString(1, pseudo);
-			pStmt.executeUpdate();
-			Statement stmt = cnx.createStatement();
-            ResultSet rs = stmt.executeQuery(SELECT_BY_PSEUDO);
+			
+            rs = pStmt.executeQuery();
             
-            int idUtilisateur = rs.getInt("no_utilisateur");
-            String nom = rs.getString("nom");
-            String prenom = rs.getString("prenom");
-            String email = rs.getString("email");
-            String telephone = rs.getString("telephone");
-            String rue = rs.getString("rue");
-            String codePostal = rs.getString("code_postal");
-            String ville = rs.getString("ville");
-            
-            utilisateur = new Utilisateur(idUtilisateur, pseudo, nom, prenom,email,telephone,rue,codePostal,ville);
+            if (rs.next()) {
+            	int idUtilisateur = rs.getInt("no_utilisateur");
+                String nom = rs.getString("nom");
+                String prenom = rs.getString("prenom");
+                String email = rs.getString("email");
+                String telephone = rs.getString("telephone");
+                String rue = rs.getString("rue");
+                String codePostal = rs.getString("code_postal");
+                String ville = rs.getString("ville");
+                
+                utilisateur = new Utilisateur(idUtilisateur, pseudo, nom, prenom,email,telephone,rue,codePostal,ville);
+                
+            }
             
         } catch (SQLException e) {
             e.printStackTrace();
         }
 		return utilisateur;
 	}
+	
+	/*public Eleve rechercher(Eleve eleve) throws DALException {
+		Connection cnx = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Eleve unEleve= null;
+		
+		cnx = DBConnexion.seConnecter();
+		
+		try {
+			pstmt = cnx.prepareStatement(RECHERCHER);
+			pstmt.setString(1, eleve.getNom());
+			pstmt.setString(2, eleve.getPrenom());
+			rs=pstmt.executeQuery();
+			
+			if (rs.next()) {
+				unEleve = new Eleve();
+				unEleve.setNom(rs.getString("nom"));
+				unEleve.setPrenom(rs.getString("prenom"));
+				rs.getString("adresse");
+				if (rs.wasNull()) {
+					unEleve.setAdresse("<<non renseignée>>");
+				} else {
+					unEleve.setAdresse(rs.getString("adresse"));
+				}
+			}
+			
+		} catch (SQLException e) {
+			throw new DALException("probleme methode rechercher", e);
+		} finally {
+			DBConnexion.seDeconnecter(pstmt, cnx);
+		}
+		
+		return unEleve;
+	}*/
 	
 }
