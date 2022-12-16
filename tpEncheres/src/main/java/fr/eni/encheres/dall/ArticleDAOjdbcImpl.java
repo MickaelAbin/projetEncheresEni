@@ -23,13 +23,13 @@ import fr.eni.encheres.bo.Utilisateur;
  */
 public class ArticleDAOjdbcImpl implements ArticleDAO {
 
-	private final static String AJOUTER_NOUVELLE_VENTE = "insert into ARTICLES_VENDUS values (?,?,?,?,?,?,?,?);";
+	private final static String AJOUTER_NOUVELLE_VENTE = "insert into ARTICLES_VENDUS  (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,no_vendeur,no_categorie)values (?,?,?,?,?,?,?);";
 
 	private final static String SELECT_ALL = "SELECT * FROM ARTICLES_VENDUS;";
 
 	private final static String DELETE = "DELETE FROM ARTICLES_VENDUS WHERE idListe=?;";
 
-	private static final String AJOUTER_RETRAIT = "insert into ARTICLES_VENDUS values (?,?,?,?);";
+	private static final String AJOUTER_RETRAIT = "insert into RETRAITS (no_article,rue,code_postal,ville)  values (?,?,?,?);";
 
 /*	public List<Article> selectAll() {
 		List<Article> listes = new ArrayList<>();
@@ -76,6 +76,7 @@ public class ArticleDAOjdbcImpl implements ArticleDAO {
 
 	public void insert(Article article) {
 		System.out.println(article);
+		System.out.println("test");
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			PreparedStatement pStmt = cnx.prepareStatement(AJOUTER_NOUVELLE_VENTE, Statement.RETURN_GENERATED_KEYS);
 			pStmt.setString(1, article.getNomArticle());
@@ -83,12 +84,15 @@ public class ArticleDAOjdbcImpl implements ArticleDAO {
 			pStmt.setDate(3, Date.valueOf(article.getDateDebutEncheres()));
 			pStmt.setDate(4, Date.valueOf(article.getDateFinEncheres()));
 			pStmt.setInt(5, article.getPrixInitial());
-			pStmt.setInt(7, article.getVendeur().getNoUtilisateur());
-			pStmt.setInt(8, article.getCategorie().getNoCategorie());
+			pStmt.setInt(6, article.getVendeur().getNoUtilisateur());
+			pStmt.setInt(7, article.getCategorie().getNoCategorie());
 			pStmt.executeUpdate();
 			ResultSet rs = pStmt.getGeneratedKeys();
 			if (rs.next()) {
 				article.setNombreArticle(rs.getInt(1));
+				System.out.println("test");
+System.out.println(article);
+System.out.println("test");
 
 				PreparedStatement pStmt2 = cnx.prepareStatement(AJOUTER_RETRAIT);
 

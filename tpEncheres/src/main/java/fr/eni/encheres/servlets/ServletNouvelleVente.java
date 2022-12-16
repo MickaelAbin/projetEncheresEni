@@ -68,11 +68,14 @@ public class ServletNouvelleVente extends HttpServlet {
 		String rue = request.getParameter("rue");
 		String codePostal = request.getParameter("codePostal");
 		String ville = request.getParameter("ville");
+		System.out.println(ville);
 
 		Retrait retrait = new Retrait(rue, codePostal, ville);
+		System.out.println(retrait);
 		Categorie categorieChoisi = new Categorie(categorie);
+		System.out.println(categorieChoisi);
 		Article article = new Article(nomArticle, description, dateDeb, dateF, prixf, vendeur, categorieChoisi,retrait);
-
+System.out.println(article);
 		
 
 		/*

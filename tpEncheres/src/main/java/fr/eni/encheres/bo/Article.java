@@ -234,13 +234,20 @@ public class Article {
 		this.categorie = categorie;
 	}
 
-	
+
 	@Override
 	public String toString() {
-		return "Articles [no_article=" + nombreArticle + ", nom_article=" + nomArticle + ", description=" + description
-				+ ", date_debut_encheres=" + dateDebutEncheres + ", date_fin_encheres=" + dateFinEncheres
-				+ ", prix_initial=" + prixInitial + ", prix_vente=" + prixVente + ", no_vendeur=" + vendeur
-				+ ", no_categorie=" + categorie + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Article [nombreArticle=").append(nombreArticle).append(", nomArticle=").append(nomArticle)
+				.append(", description=").append(description).append(", dateDebutEncheres=").append(dateDebutEncheres)
+				.append(", dateFinEncheres=").append(dateFinEncheres).append(", prixInitial=").append(prixInitial)
+				.append(", prixVente=").append(prixVente).append(", vendeur=").append(vendeur).append(", categorie=")
+				.append(categorie).append(", retrait=").append(retrait).append(", etatVente=").append(etatVente)
+				.append("]");
+		return builder.toString();
 	}
+
+	
+	
 
 }
