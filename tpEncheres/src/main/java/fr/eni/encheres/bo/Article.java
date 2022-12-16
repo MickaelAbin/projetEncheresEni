@@ -21,10 +21,35 @@ public class Article {
 	private int prixVente;
 	private Utilisateur vendeur;
 	private Categorie categorie;
+	private Retrait retrait;
 	private String etatVente;
 	
 	
 	
+	/**
+	 * @param nomArticle
+	 * @param description
+	 * @param dateDebutEncheres
+	 * @param dateFinEncheres
+	 * @param prixInitial
+	 * @param vendeur
+	 * @param categorie
+	 * @param retrait
+	 */
+	public Article(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
+			int prixInitial, Utilisateur vendeur, Categorie categorie, Retrait retrait) {
+		super();
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.prixInitial = prixInitial;
+		this.vendeur = vendeur;
+		this.categorie = categorie;
+		this.retrait = retrait;
+	}
+
+
 	/**
 	 * @param nomArticle
 	 * @param description
@@ -40,6 +65,28 @@ public class Article {
 		this.dateDebutEncheres = dateDebutEncheres;
 		this.dateFinEncheres = dateFinEncheres;
 		this.prixInitial = prixInitial;
+	}
+
+
+	/**
+	 * @param nomArticle
+	 * @param description
+	 * @param dateDebutEncheres
+	 * @param dateFinEncheres
+	 * @param prixInitial
+	 * @param vendeur
+	 * @param categorie
+	 */
+	public Article(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
+			int prixInitial, Utilisateur vendeur, Categorie categorie) {
+		super();
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.prixInitial = prixInitial;
+		this.vendeur = vendeur;
+		this.categorie = categorie;
 	}
 
 
@@ -155,6 +202,38 @@ public class Article {
 	public void setNo_categorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
+	
+	/**
+	 * @return the retrait
+	 */
+	public Retrait getRetrait() {
+		return retrait;
+	}
+
+
+	/**
+	 * @param retrait the retrait to set
+	 */
+	public void setRetrait(Retrait retrait) {
+		this.retrait = retrait;
+	}
+
+
+	/**
+	 * @param vendeur the vendeur to set
+	 */
+	public void setVendeur(Utilisateur vendeur) {
+		this.vendeur = vendeur;
+	}
+
+
+	/**
+	 * @param categorie the categorie to set
+	 */
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
 	
 	@Override
 	public String toString() {

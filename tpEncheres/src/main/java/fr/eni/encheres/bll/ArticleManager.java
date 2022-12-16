@@ -35,6 +35,6 @@ private static ArticleManager instance;
 		DAOFactory.getArticlesDAO().delete(idListe);
 	}
 	public void ajouterArticle(Article article) {
-		DAOFactory.getUtilisateurDAO().insert(article);
+		DAOFactory.getArticlesDAO().insert(article);
 	}
 }

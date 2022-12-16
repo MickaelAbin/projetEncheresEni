@@ -12,6 +12,9 @@ public class Categorie {
 		this.noCategorie = noCategorie;
 		this.libelle = libelle;
 	}
+	public Categorie(int noCategorie) {
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * @return the noCategorie
 	 */
