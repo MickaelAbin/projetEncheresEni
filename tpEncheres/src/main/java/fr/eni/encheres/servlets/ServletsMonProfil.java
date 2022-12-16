@@ -45,7 +45,7 @@ public class ServletsMonProfil extends HttpServlet {
 	     UtilisateurManager.getInstance().ajouterUtilisateur(utilisateur);
                 
                 HttpSession session = request.getSession();
-                session.setAttribute("utilisateur",utilisateur);
+                session.setAttribute("utilisateurConnecte",utilisateur);
              
                 this.getServletContext().getRequestDispatcher("/WEB-INF/Accueil.jsp").forward(request, response);
             

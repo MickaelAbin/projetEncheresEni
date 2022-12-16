@@ -13,15 +13,15 @@
 	<h1>Profil</h1>
 	
 	
-	<c:if test="${!empty sessionScope.utilisateur }"></c:if>
-	<p> Pseudo : ${utilisateur.pseudo } </p>
-	<p> Nom : ${utilisateur.nom } </p>
-	<p> Prenom : ${utilisateur.prenom } </p>
-	<p> Email : ${utilisateur.email } </p>
-	<p> Telephone : ${utilisateur.telephone } </p>
-	<p> Rue : ${utilisateur.rue } </p>
-	<p> Code Postal : ${utilisateur.codePostal } </p>
-	<p> Ville : ${utilisateur.ville } </p>
+	<c:if test="${!empty sessionScope.utilisateurConnecte }"></c:if>
+	<p> Pseudo : ${utilisateurConnecte.pseudo } </p>
+	<p> Nom : ${utilisateurConnecte.nom } </p>
+	<p> Prenom : ${utilisateurConnecte.prenom } </p>
+	<p> Email : ${utilisateurConnecte.email } </p>
+	<p> Telephone : ${utilisateurConnecte.telephone } </p>
+	<p> Rue : ${utilisateurConnecte.rue } </p>
+	<p> Code Postal : ${utilisateurConnecte.codePostal } </p>
+	<p> Ville : ${utilisateurConnecte.ville } </p>
 	<a href="/tpEncheres/Accueil">Accueil</a>
 	
 </body>
