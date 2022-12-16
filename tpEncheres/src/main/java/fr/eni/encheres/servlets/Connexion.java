@@ -48,6 +48,7 @@ public class Connexion extends HttpServlet {
 		Utilisateur utilisateurConnecte = null;
 		if(messageConnexion.equals("Connexion valide")) {
 			utilisateurConnecte = UtilisateurManager.selectByPseudo(utilisateurConnexion.getPseudo());
+			
 			session.setAttribute("utilisateurConnecte", utilisateurConnecte);
 			response.sendRedirect("/tpEncheres/Accueil");
 			//request.getRequestDispatcher("/WEB-INF/Accueil.jsp").FORWARD_SERVLET_PATH;
@@ -57,7 +58,6 @@ public class Connexion extends HttpServlet {
 			doGet(request, response);
 		}
 		
-
 		
 		
 		
