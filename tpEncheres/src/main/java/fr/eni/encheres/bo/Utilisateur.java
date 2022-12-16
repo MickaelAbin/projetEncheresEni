@@ -50,6 +50,16 @@ public class Utilisateur {
 
 
 	/**
+	 * @param noUtilisateur
+	 */
+	public Utilisateur(int noUtilisateur) {
+		super();
+		this.noUtilisateur = noUtilisateur;
+	}
+
+
+
+	/**
 	 * @param pseudo
 	 * @param nom
 	 * @param prenom
@@ -238,6 +248,19 @@ public int getCredit() {
 	}
 	public void setCredit(int credit) {
 		this.credit = credit;
+	}
+
+
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Utilisateur [noUtilisateur=").append(noUtilisateur).append(", pseudo=").append(pseudo)
+				.append(", nom=").append(nom).append(", prenom=").append(prenom).append(", email=").append(email)
+				.append(", telephone=").append(telephone).append(", rue=").append(rue).append(", codePostal=")
+				.append(codePostal).append(", ville=").append(ville).append(", motDePasse=").append(motDePasse)
+				.append(", credit=").append(credit).append(", administrateur=").append(administrateur).append("]");
+		return builder.toString();
 	}
     
     

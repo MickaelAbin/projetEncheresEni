@@ -23,7 +23,7 @@ import fr.eni.encheres.bo.Utilisateur;
  */
 public class ArticleDAOjdbcImpl implements ArticleDAO {
 
-	private final static String AJOUTER_NOUVELLE_VENTE = "insert into ARTICLES_VENDUS values (?,?,?,?,?,?,?);";
+	private final static String AJOUTER_NOUVELLE_VENTE = "insert into ARTICLES_VENDUS values (?,?,?,?,?,?,?,?);";
 
 	private final static String SELECT_ALL = "SELECT * FROM ARTICLES_VENDUS;";
 
@@ -75,6 +75,7 @@ public class ArticleDAOjdbcImpl implements ArticleDAO {
 	}
 
 	public void insert(Article article) {
+		System.out.println(article);
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			PreparedStatement pStmt = cnx.prepareStatement(AJOUTER_NOUVELLE_VENTE, Statement.RETURN_GENERATED_KEYS);
 			pStmt.setString(1, article.getNomArticle());

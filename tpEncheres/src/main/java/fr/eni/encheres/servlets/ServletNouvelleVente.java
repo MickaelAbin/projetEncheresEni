@@ -37,12 +37,22 @@ public class ServletNouvelleVente extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
-		Utilisateur vendeur = (Utilisateur) session.getAttribute("utilisateur");
+        Utilisateur utilisateurSession = (Utilisateur) session.getAttribute("utilisateurConnecte");
+        Utilisateur vendeur = new Utilisateur(utilisateurSession.getNoUtilisateur());
+
+
+
+		
+		
+		
+		System.out.println(vendeur);
 		String nomArticle = request.getParameter("article");
 		String description = request.getParameter("description");
-		String dateDebut = request.getParameter("DateDebut");
-		String dateFin = request.getParameter("DateFin");
+		String dateDebut = request.getParameter("dateDebut");
+		System.out.println(dateDebut);
+		String dateFin = request.getParameter("dateFin");
 		String prix = request.getParameter("PRIX");
 		int categorie = Integer.parseInt(request.getParameter("categorie")) ;
 		System.out.println(categorie);
