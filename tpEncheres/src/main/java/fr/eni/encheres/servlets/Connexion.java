@@ -43,7 +43,7 @@ public class Connexion extends HttpServlet {
 				request.getParameter("motDePasse")
 				);
 		String messageConnexion = UtilisateurManager.connexionUtilisateur(utilisateurConnexion);
-		request.setAttribute("messageConnexion", messageConnexion);
+		session.setAttribute("messageConnexion", messageConnexion);
 		String pseudo = utilisateurConnexion.getPseudo();
 		
 		session.setAttribute("testUtilisateur", utilisateurConnexion);
