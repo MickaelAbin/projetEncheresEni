@@ -23,6 +23,7 @@
 <body>
 	<%@ include file="Header.jsp"%>
 	
+	<div>ici se trouve l'accueil</div>
     	
 </body>
 </html>
