@@ -19,16 +19,10 @@
 	crossorigin="anonymous"></script>
 <title>accueil</title>
 </head>
+
 <body>
 	<%@ include file="Header.jsp"%>
-	<c:if test="${!empty test}">
-		<div> Message : ${requestScope.test.pseudo}</div>
-		<p>pseudo : ${sessionScope.utilisateurConnecte.pseudo}</p>
-		<p>test du session : ${sessionScope.testUtilisateur.pseudo }</p>
-	</c:if>
-    	<a href="/tpEncheres/MonProfil">S'inscrire</a>
-    	<a href="/tpEncheres/Connexion">Se connecter</a>
-    	<a href="/tpEncheres/ServletsProfil">Mon profil</a>
-    	<a href="/tpEncheres/NouvelleVente">Nouvelle vente</a>
+	
+    	
 </body>
 </html>

@@ -25,17 +25,18 @@
 		Article : <input type="text" name="article"> <br> <br>
 
 		Description :
-		<textarea name="description" rows="5" cols="33">
-	</textarea>
-		<br> <br> <label for="categorie">Categorie:</label>
-
-<select name="categorie" id="categorie">
-    <option value="">--Catégorie--</option>
-    <option value="1">Jardin</option>
-    <option value="2">Informatique</option>
-    <option value="3">Maison</option>
-    
-</select>
+		<textarea name="description" rows="5" cols="33"></textarea>
+		<br> <br> 
+		<label for="categorie">Categorie:</label>
+	
+		<select name="categorie" id="categorie">
+		    <option value="">--Catégorie--</option>
+		    <option value="1">Jardin</option>
+		    <option value="2">Informatique</option>
+		    <option value="3">Maison</option>
+		    
+		</select>
+		
 		<br> <br> photo de l'article : <input type="file"
 			name="phtoto" accept="image/png, image/jpeg"> <br> <br>
 		<label for="tentacles">Mise à prix:</label> <input type="number"
@@ -47,9 +48,7 @@
 			value="2022-07-22" min="2022-01-01" max="2025-12-31"> <br>
 		<br>
 		<fieldset>
-			<legend>
-				<h2>Retrait</h2>
-			</legend>
+			<legend>Retrait</legend>
 			<table>
 				<tr>
 					<td><label for="rue">Rue : </label></td>
@@ -79,7 +78,5 @@
 
 	</form>
 
-	</div>
-	<a href="/tpEncheres/Accueil">Accueil</a>
 </body>
 </html>

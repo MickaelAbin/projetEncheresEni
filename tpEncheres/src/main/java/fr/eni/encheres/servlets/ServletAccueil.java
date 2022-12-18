@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import fr.eni.encheres.bo.Utilisateur;
 
 
-@WebServlet("/Accueil")
+@WebServlet(description = "permet d'acceder a l'accueil du site", urlPatterns = {"/Accueil"})
 public class ServletAccueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

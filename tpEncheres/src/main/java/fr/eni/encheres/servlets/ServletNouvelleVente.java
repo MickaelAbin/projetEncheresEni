@@ -18,7 +18,7 @@ import fr.eni.encheres.bo.Categorie;
 import fr.eni.encheres.bo.Retrait;
 import fr.eni.encheres.bo.Utilisateur;
 
-@WebServlet("/NouvelleVente")
+@WebServlet(description = "permet de proposer une vente aux encheres", urlPatterns = {"/NouvelleVente"})
 public class ServletNouvelleVente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

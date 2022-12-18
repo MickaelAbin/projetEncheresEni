@@ -2,17 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <header>
-	<h1>ENI-Enchères</h1>
+	<h1><a href="<%=request.getContextPath()%>/Accueil">ENI-Enchères</a></h1>
 	<div>
 		<c:if test="${!empty utilisateurConnecte}">
-			<a href="/tpEncheres/ServletsProfil">Mon profil</a>
-    		<a href="/tpEncheres/NouvelleVente">Nouvelle vente</a>
-    		<input type="button" action="<%=request.getContextPath()%>/Deconnexion"  method="POST" value="Se déconnecter">
+			<a href="<%=request.getContextPath()%>/MonProfil">Mon profil</a>
+    		<a href="<%=request.getContextPath()%>/NouvelleVente">Nouvelle vente</a>
+    		<a href="<%=request.getContextPath()%>/Deconnexion">Se déconnecter</a>
 		</c:if>
 		
 		<c:if test="${empty utilisateurConnecte}">
-			<a href="/tpEncheres/MonProfil">S'inscrire</a>
-    		<a href="/tpEncheres/Connexion">Se connecter</a>
+			<a href="<%=request.getContextPath()%>/Inscription">S'inscrire</a>
+    		<a href="<%=request.getContextPath()%>/Connexion">Se connecter</a>
 		</c:if>
     	
 	</div>
