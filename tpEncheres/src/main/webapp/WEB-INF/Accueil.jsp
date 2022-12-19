@@ -96,6 +96,33 @@
 =======
 	
 	<div>ici se trouve l'accueil</div>
+	<h2>Liste des enchères</h2>
+
+	
+	
+	
+	
+		<c:forEach var="articleVente" items="${listeArticles }">
+			<div style= "border: 1px solid black; 
+  background-color: lightgray">
+ 
+  			<img src="./images/test.png" alt="Description de l'image" width="200" height="200" border="0">
+  
+  			<div>
+			<h3>${articleVente.nomArticle }</h3> 
+			<div>Prix : ${articleVente.prixInitial }  points</div>
+			<div>Fin de l'enchère : ${articleVente.dateFinEncheres }</div>
+			<div>Vendeur : ${articleVente.vendeur.pseudo }</div>
+			
+			</div>
+			</div>
+	<br>
+			<br>
+		</c:forEach>
+
+	
+	
+	
     	
 >>>>>>> branch 'main' of https://github.com/AntoineTurmeau/tpEncheres.git
 </body>

@@ -173,6 +173,16 @@ public class Utilisateur {
 
 
 
+	/**
+	 * @param pseudo
+	 */
+	public Utilisateur(String pseudo) {
+
+		this.pseudo = pseudo;
+	}
+
+
+
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}

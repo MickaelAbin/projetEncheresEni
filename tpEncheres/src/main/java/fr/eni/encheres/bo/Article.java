@@ -52,6 +52,21 @@ public class Article {
 
 	/**
 	 * @param nomArticle
+	 * @param dateFinEncheres
+	 * @param prixInitial
+	 * @param vendeur
+	 */
+	public Article(String nomArticle, LocalDate dateFinEncheres, int prixInitial, Utilisateur vendeur) {
+		super();
+		this.nomArticle = nomArticle;
+		this.dateFinEncheres = dateFinEncheres;
+		this.prixInitial = prixInitial;
+		this.vendeur = vendeur;
+	}
+
+
+	/**
+	 * @param nomArticle
 	 * @param description
 	 * @param dateDebutEncheres
 	 * @param dateFinEncheres

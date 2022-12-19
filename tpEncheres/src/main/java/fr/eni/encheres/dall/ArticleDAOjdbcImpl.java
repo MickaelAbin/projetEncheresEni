@@ -25,13 +25,13 @@ public class ArticleDAOjdbcImpl implements ArticleDAO {
 
 	private final static String AJOUTER_NOUVELLE_VENTE = "insert into ARTICLES_VENDUS  (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,no_vendeur,no_categorie)values (?,?,?,?,?,?,?);";
 
-	private final static String SELECT_ALL = "SELECT * FROM ARTICLES_VENDUS;";
+	private final static String SELECT_ALL = "SELECT nom_article,prix_initial,date_fin_encheres,pseudo FROM ARTICLES_VENDUS INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_vendeur=UTILISATEURS.no_utilisateur;";
 
 	private final static String DELETE = "DELETE FROM ARTICLES_VENDUS WHERE idListe=?;";
 
 	private static final String AJOUTER_RETRAIT = "insert into RETRAITS (no_article,rue,code_postal,ville)  values (?,?,?,?);";
 
-/*	public List<Article> selectAll() {
+	public List<Article> selectAll() {
 		List<Article> listes = new ArrayList<>();
 
 		try (Connection cnx = ConnectionProvider.getConnection()) {
@@ -40,20 +40,17 @@ public class ArticleDAOjdbcImpl implements ArticleDAO {
 
 			ResultSet rs = stmt.executeQuery(SELECT_ALL);
 			while (rs.next()) {
-				int idArticle = rs.getInt("nombreArticle");
-				String nom = rs.getString("nomArticle");
-				String desc = rs.getString("description");
-				Date debut = rs.getDate("dateDebutEncheres", null);
-				Date fin = rs.getDate("dateFinEncheres", null);
-				int prixEntre = rs.getInt("prixInitial");
-				int prixSortie = rs.getInt("prixVente");
-				int idVendeur = rs.getInt("vendeur");
-				int idCategorie = rs.getInt("categorie");
-
-			Article article = new Article(idArticle, nom, desc,
-						debut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-						fin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), prixEntre, prixSortie, idVendeur,
-						idCategorie);
+				
+				String nom = rs.getString("nom_article");
+				int prixEntre = rs.getInt("prix_initial");
+				Date fin = rs.getDate("date_fin_encheres");
+				String vendeur = rs.getString("pseudo");
+				
+				
+				
+				
+			Utilisateur utilisateur = new Utilisateur(vendeur);
+			Article article = new Article( nom, fin.toLocalDate(), prixEntre,utilisateur );
 				listes.add(article);
 			}
 
@@ -63,7 +60,7 @@ public class ArticleDAOjdbcImpl implements ArticleDAO {
 
 		return listes;
 	}
-*/
+
 	public void delete(int idListe) {
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			PreparedStatement pStmt = cnx.prepareStatement(DELETE);
@@ -108,10 +105,6 @@ System.out.println("test");
 		}
 	}
 
-	@Override
-	public List<Article> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

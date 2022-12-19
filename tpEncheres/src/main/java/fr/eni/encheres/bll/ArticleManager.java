@@ -26,7 +26,7 @@ private static ArticleManager instance;
 	
 	private ArticleManager() { }
 	
-	public List<Article> selectAll() {
+	public List<Article> affichageVente() {
 		return DAOFactory.getArticlesDAO().selectAll();
 	}
 	
