@@ -13,7 +13,7 @@
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
 	
-<link href="../css/StyleConnexion.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/css/StyleAccueil.css" rel="stylesheet" type="text/css">
 <!-- JavaScript Bundle with Popper -->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
@@ -25,7 +25,7 @@
 <body>
 	<%@ include file="Header.jsp"%>
 	
-	<h2>Liste des enchères</h2>
+	<h2 class="sousTitre">Liste des enchères</h2>
 	<form action="<%=request.getContextPath()%>/Accueil"  method="POST">
 		<h3>Filtres :</h3>
 		
