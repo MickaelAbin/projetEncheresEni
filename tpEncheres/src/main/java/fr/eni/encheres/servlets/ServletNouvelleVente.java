@@ -2,6 +2,8 @@ package fr.eni.encheres.servlets;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.encheres.bll.ArticleManager;
+import fr.eni.encheres.bll.CategorieManager;
 import fr.eni.encheres.bll.UtilisateurManager;
 import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.bo.Categorie;
@@ -28,8 +31,11 @@ public class ServletNouvelleVente extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = request.getSession();
+		
+		//permet de recuperer toutes les catégories 
+        List<Categorie> listeCategories = CategorieManager.getInstance().selectAll();
+        session.setAttribute("listeCategories", listeCategories);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/NouvelleVente.jsp");
 		rd.forward(request, response);
@@ -41,9 +47,8 @@ public class ServletNouvelleVente extends HttpServlet {
 		HttpSession session = request.getSession();
         Utilisateur utilisateurSession = (Utilisateur) session.getAttribute("utilisateurConnecte");
         Utilisateur vendeur = new Utilisateur(utilisateurSession.getNoUtilisateur());
-
-
-
+        
+        
 		
 		
 		

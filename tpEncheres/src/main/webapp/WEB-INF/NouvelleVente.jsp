@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
 </head>
 <body>
 	<%@ include file="Header.jsp"%>
-
+	
 	<form action="<%=request.getContextPath()%>/NouvelleVente"  method="POST">
 		Article : <input type="text" name="article"> <br> <br>
 
@@ -29,12 +30,10 @@
 		<br> <br> 
 		<label for="categorie">Categorie:</label>
 	
-		<select name="categorie" id="categorie">
-		    <option value="">--Catégorie--</option>
-		    <option value="1">Jardin</option>
-		    <option value="2">Informatique</option>
-		    <option value="3">Maison</option>
-		    
+		<select name="categorie" id="categorie">		    
+		    <c:forEach var="cat" items="${sessionScope.listeCategories}">
+				<option value="${cat.noCategorie }"><c:out value="${cat.libelle}"/></option>
+			</c:forEach>
 		</select>
 		
 		<br> <br> photo de l'article : <input type="file"
