@@ -3,6 +3,9 @@
  */
 package fr.eni.encheres.dall;
 
+import java.sql.Connection;
+
+import fr.eni.encheres.servlets.Connexion;
 
 /**
  * @author tgerdelat2022
@@ -26,5 +29,9 @@ public class DAOFactory {
 	}
 	public static RetraitDAOJdbcImpl getRetraitDAO() {
 		return new RetraitDAOJdbcImpl();
+	}
+
+	public static Connexion getConnection() {
+		return new Connexion();
 	}
 }

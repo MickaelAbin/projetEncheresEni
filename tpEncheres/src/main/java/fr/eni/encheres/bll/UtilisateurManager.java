@@ -61,4 +61,7 @@ public class UtilisateurManager {
 			
 			return utilisateur;
 		}
+		public void modifier(Utilisateur utilisateur) {
+			 DAOFactory.getUtilisateurDAO().modifier(utilisateur);
+		}
 }

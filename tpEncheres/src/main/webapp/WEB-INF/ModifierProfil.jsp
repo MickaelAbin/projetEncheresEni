@@ -1,20 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Inscription</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modifier Mon Profil</title>
 </head>
 <body>
-	<%@ include file="Header.jsp"%>
+   <%@ include file="Header.jsp"%>
 
 	<fieldset>
 	
-		<legend>Inscription</legend>
+		<legend><h2>Modifier Mon Profil</h2></legend>
 
-		<form  action="<%=request.getContextPath()%>/Inscription"  method="POST" >
+		<form  action="<%=request.getContextPath()%>/ServletModifierProfil"  method="POST" >
 		    <div>
 			    <label for="nom">Pseudo : </label>
 				<input type="text" name="pseudo" id="pseudo" required />
@@ -97,12 +98,13 @@
 			<br />
 			
 			<div>
-		    	<input type="submit" name="creer" />
+		    	<input type="submit" name="envoyer" />
 				<input type="reset" value="Annuler">
 		    </div>
 				
 		</form>
 	</fieldset>
+
 
 </body>
 </html>

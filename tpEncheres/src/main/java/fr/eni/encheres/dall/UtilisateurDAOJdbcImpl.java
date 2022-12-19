@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.encheres.bo.Utilisateur;
+import fr.eni.encheres.servlets.Connexion;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private final static String SELECT_ALL = "Select * from Utilisateurs";
@@ -16,6 +17,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private final static String SELECT_BY_ID = "Select * FROM Utilisateurs WHERE id=?;";
 	private final static String AJOUTER_UTILISATEUR = "insert into UTILISATEURS values (?,?,?,?,?,?,?,?,?,0,0);";
 	private final static String SELECT_BY_PSEUDO = "Select * FROM Utilisateurs WHERE pseudo=?;";
+	private final static String SQL_UPDATE = "update UTILISATEURS set pseudo=?,nom=?,prenom=?,email=?,telephone=?,rue=?,code_postal=?,ville=?,mot_de_passe=? WHERE no_utilisateur=?";
 	public List<Utilisateur> selectAll() {
         List<Utilisateur> listes = new ArrayList<>();
         try(Connection cnx = ConnectionProvider.getConnection()) {
@@ -166,6 +168,28 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		return utilisateur;
 	}
 	
+	public void modifier(Utilisateur utilisateur) {
+        PreparedStatement preparedStatement = null;
+ 
+        try (Connection cnx = ConnectionProvider.getConnection()){
+ 
+            preparedStatement = cnx.prepareStatement(SQL_UPDATE);        		
+            preparedStatement.setString(1, utilisateur.getPseudo());
+            preparedStatement.setString(2, utilisateur.getNom());
+            preparedStatement.setString(3, utilisateur.getPrenom());
+            preparedStatement.setString(4, utilisateur.getEmail());
+            preparedStatement.setString(5, utilisateur.getTelephone());
+			preparedStatement.setString(6, utilisateur.getRue());
+			preparedStatement.setString(7, utilisateur.getCodePostal());
+			preparedStatement.setString(8, utilisateur.getVille());
+			preparedStatement.setString(9, utilisateur.getMotDePasse());
+ 
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+        	e.printStackTrace();
+    }
+	}
+	
 	/*public Eleve rechercher(Eleve eleve) throws DALException {
 		Connection cnx = null;
 		PreparedStatement pstmt = null;
@@ -202,3 +226,4 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	}*/
 	
 }
+
