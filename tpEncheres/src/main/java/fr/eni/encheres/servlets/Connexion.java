@@ -46,8 +46,6 @@ public class Connexion extends HttpServlet {
 		session.setAttribute("messageConnexion", messageConnexion);
 		String pseudo = utilisateurConnexion.getPseudo();
 		
-		session.setAttribute("testUtilisateur", utilisateurConnexion);
-		
 		Utilisateur utilisateurConnecte = null;
 		if(messageConnexion.equals("Connexion valide")) {
 			utilisateurConnecte = UtilisateurManager.selectByPseudo(pseudo);

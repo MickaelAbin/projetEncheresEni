@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import fr.eni.encheres.bo.Utilisateur;
 
 
-@WebServlet("/Accueil")
+@WebServlet(description = "permet d'acceder a l'accueil du site", urlPatterns = {"/Accueil"})
 public class ServletAccueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -24,16 +24,8 @@ public class ServletAccueil extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
 		
-
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		Utilisateur utilisateurCo = (Utilisateur) session.getAttribute("utilisateurConnecte");
-		Utilisateur test = new Utilisateur("test", "test");
-		//session.setAttribute("utilisateurConnecte", test);
-		request.setAttribute("test", test);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
-		rd.forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/Accueil.jsp").forward(request, response);
 	}
 
 	

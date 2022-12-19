@@ -9,20 +9,24 @@
     <title>Profile Page</title>    
 </head>
 <body>
-<fieldset>
-	<h1>Profil</h1>
+	<%@ include file="Header.jsp"%>
 	
-	
-	<c:if test="${!empty sessionScope.utilisateurConnecte }"></c:if>
-	<p> Pseudo : ${utilisateurConnecte.pseudo } </p>
-	<p> Nom : ${utilisateurConnecte.nom } </p>
-	<p> Prenom : ${utilisateurConnecte.prenom } </p>
-	<p> Email : ${utilisateurConnecte.email } </p>
-	<p> Telephone : ${utilisateurConnecte.telephone } </p>
-	<p> Rue : ${utilisateurConnecte.rue } </p>
-	<p> Code Postal : ${utilisateurConnecte.codePostal } </p>
-	<p> Ville : ${utilisateurConnecte.ville } </p>
-	<a href="/tpEncheres/Accueil">Accueil</a>
-	
+	<fieldset>
+		<h1>Profil</h1>
+		
+		
+		<c:if test="${!empty sessionScope.utilisateurConnecte }"></c:if>
+		<p> Pseudo : ${utilisateurConnecte.pseudo } </p>
+		<p> Nom : ${utilisateurConnecte.nom } </p>
+		<p> Prenom : ${utilisateurConnecte.prenom } </p>
+		<p> Email : ${utilisateurConnecte.email } </p>
+		<p> Telephone : ${utilisateurConnecte.telephone } </p>
+		<p> Rue : ${utilisateurConnecte.rue } </p>
+		<p> Code Postal : ${utilisateurConnecte.codePostal } </p>
+		<p> Ville : ${utilisateurConnecte.ville } </p>
+		<a href="/tpEncheres/Accueil">Accueil</a>
+		
+	</fieldset>
+
 </body>
 </html>

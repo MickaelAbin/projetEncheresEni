@@ -7,7 +7,11 @@
 <meta charset="ISO-8859-1">
 <title>Connexion</title>
 </head>
+
 <body>
+	
+	<%@ include file="Header.jsp"%>
+	
 	<form  action="<%=request.getContextPath()%>/Connexion"  method="POST" >
 		<div>
 			<label for="identifiant">Identifiant : </label>
@@ -19,12 +23,17 @@
 			<input type="password" name="motDePasse" id="motDePasse" required />
 		</div>
 		
+		<div name="erreurConnexion" style="color:red">
+			<c:if test="${!empty messageConnexion}">
+				${sessionScope.messageConnexion}
+			</c:if>
+	    	
+		</div>
 		
 		<input type="submit" name="creer" value="Connexion"/>
 	</form>
 	
-	<div><%=application.getAttribute("messageConnexion") %></div>
-	<input type="button" action="<%=request.getContextPath()%>/MonProfil"  method="GET" value="Créer un compte">
-	<a href="/tpEncheres/Accueil">Accueil</a>
+	<a href="<%=request.getContextPath()%>/Inscription">Créer un compte</a>
+	
 </body>
 </html>

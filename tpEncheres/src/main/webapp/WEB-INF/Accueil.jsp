@@ -19,8 +19,10 @@
 	crossorigin="anonymous"></script>
 <title>accueil</title>
 </head>
+
 <body>
 	<%@ include file="Header.jsp"%>
+<<<<<<< HEAD
 	<c:if test="${!empty test}">
 		<div> Message : ${requestScope.test.pseudo}</div>
 		<p>pseudo : ${sessionScope.utilisateurConnecte.pseudo}</p>
@@ -91,5 +93,10 @@
   </div>
 </nav>
 
+=======
+	
+	<div>ici se trouve l'accueil</div>
+    	
+>>>>>>> branch 'main' of https://github.com/AntoineTurmeau/tpEncheres.git
 </body>
 </html>
