@@ -23,6 +23,12 @@
 			<input type="password" name="motDePasse" id="motDePasse" required />
 		</div>
 		
+		<div name="erreurConnexion" style="color:red">
+			<c:if test="${!empty messageConnexion}">
+				${sessionScope.messageConnexion}
+			</c:if>
+	    	
+		</div>
 		
 		<input type="submit" name="creer" value="Connexion"/>
 	</form>
