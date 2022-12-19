@@ -35,9 +35,9 @@ public class ServletAccueil extends HttpServlet {
 		
 		//permet de recuperer toutes les catégories 
         List<Categorie> listeCategories = CategorieManager.getInstance().selectAll();
-        
         session.setAttribute("listeCategories", listeCategories);List<Article> articles = ArticleManager.getInstance().affichageVente();
-		request.setAttribute("listeArticles", articles);
+		
+        request.setAttribute("listeArticles", articles);
 		
 		
 		request.getRequestDispatcher("/WEB-INF/Accueil.jsp").forward(request, response);
