@@ -30,7 +30,7 @@
 	    	
 		</div>
 		
-		<input type="submit" name="creer" value="Connexion"/>
+		<input type="submit" name="connexion" value="Connexion"/>
 	</form>
 	
 	<a href="<%=request.getContextPath()%>/Inscription">Créer un compte</a>

@@ -12,6 +12,8 @@
 	rel="stylesheet"
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
+	
+<link href="../css/StyleConnexion.css" rel="stylesheet" type="text/css">
 <!-- JavaScript Bundle with Popper -->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
@@ -22,20 +24,56 @@
 
 <body>
 	<%@ include file="Header.jsp"%>
-<<<<<<< HEAD
-	<c:if test="${!empty test}">
-		<div> Message : ${requestScope.test.pseudo}</div>
-		<p>pseudo : ${sessionScope.utilisateurConnecte.pseudo}</p>
-		<p>test du session : ${sessionScope.testUtilisateur.pseudo }</p>
-	</c:if>
-    	<a href="/tpEncheres/MonProfil">S'inscrire</a>
-    	<a href="/tpEncheres/Connexion">Se connecter</a>
-    	<a href="/tpEncheres/ServletsProfil">Mon profil</a>
-    	<a href="/tpEncheres/NouvelleVente">Nouvelle vente</a>
+	
+	<h2>Liste des enchères</h2>
+	<form action="<%=request.getContextPath()%>/Accueil"  method="POST">
+		<h3>Filtres :</h3>
+		
+		<div>
+			<input type="search" placeholder="Le nom de l'article contient">
+		</div>
+		
+		<div>
+			<label for="categorie">Categorie:</label>
+	
+			<select name="categorie" id="categorie">
+				<option>Toutes</option>
+			    <c:forEach var="cat" items="${sessionScope.listeCategories}">
+					<option value="${cat.noCategorie }"><c:out value="${cat.libelle}"/></option>
+				</c:forEach>
+			</select>
+		</div>
+		<c:if test="${!empty utilisateurConnecte}">
+			<div>
+				<input type="radio" name="achats" value="Achats"/>
+				
+				<input type="checkbox" name="encheresOuvertes" value="enchères ouvertes">
+				<input type="checkbox" name="encheresEnCours" value="mes enchères en cours">
+				<input type="checkbox" name="encheresRemportees" value="mes enchères remportées">
+			</div>
+			
+			<div>
+				<input type="radio" name="mesVentes" value="Mes ventes"/>
+				
+				<input type="checkbox" name="ventesEnCours" value="mes ventes en cours">
+				<input type="checkbox" name="ventesNonDebutees" value="ventes non débutées">
+				<input type="checkbox" name="ventesTerminees" value="ventes terminées">
+			</div>
+			
+			
+		</c:if>
+		<input type="submit" name="connexion" value="Rechercher"/>
+	</form>
     	
-    	<div class="d-grid gap-4 col-3 mx-auto">
-  <button class="btn btn-primary" type="button">Button</button>
-</div>
+    <div class="d-grid gap-4 col-3 mx-auto">
+		<button class="btn btn-primary" type="button">Button</button>
+	</div>
+
+
+
+
+
+
 
 <!-- Example single danger button -->
 <div class="btn-group">
@@ -96,7 +134,7 @@
 =======
 	
 	<div>ici se trouve l'accueil</div>
-	<h2>Liste des enchères</h2>
+	
 
 	
 	

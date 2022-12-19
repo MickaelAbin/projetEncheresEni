@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.encheres.bll.ArticleManager;
+import fr.eni.encheres.bll.CategorieManager;
 import fr.eni.encheres.bo.Article;
+import fr.eni.encheres.bo.Categorie;
 import fr.eni.encheres.bo.Utilisateur;
 
 
@@ -29,7 +31,12 @@ public class ServletAccueil extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Article> articles = ArticleManager.getInstance().affichageVente();
+		HttpSession session = request.getSession();
+		
+		//permet de recuperer toutes les catégories 
+        List<Categorie> listeCategories = CategorieManager.getInstance().selectAll();
+        
+        session.setAttribute("listeCategories", listeCategories);List<Article> articles = ArticleManager.getInstance().affichageVente();
 		request.setAttribute("listeArticles", articles);
 		
 		
