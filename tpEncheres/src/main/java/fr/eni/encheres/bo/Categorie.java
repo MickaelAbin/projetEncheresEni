@@ -12,6 +12,15 @@ public class Categorie {
 		this.noCategorie = noCategorie;
 		this.libelle = libelle;
 	}
+	
+	/**
+	 * @param libelle
+	 */
+	public Categorie(String libelle) {
+		super();
+		this.libelle = libelle;
+	}
+
 	public Categorie(int noCategorie) {
 		this.noCategorie = noCategorie;
 	}

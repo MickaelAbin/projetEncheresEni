@@ -27,6 +27,30 @@ public class Article {
 	
 	
 	/**
+	 * @param nombreArticle
+	 * @param nomArticle
+	 * @param description
+	 * @param dateFinEncheres
+	 * @param prixInitial
+	 * @param vendeur
+	 * @param categorie
+	 * @param retrait
+	 */
+	public Article(int nombreArticle, String nomArticle, String description, LocalDate dateFinEncheres, int prixInitial,
+			Utilisateur vendeur, Categorie categorie, Retrait retrait) {
+		super();
+		this.nombreArticle = nombreArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateFinEncheres = dateFinEncheres;
+		this.prixInitial = prixInitial;
+		this.vendeur = vendeur;
+		this.categorie = categorie;
+		this.retrait = retrait;
+	}
+
+
+	/**
 	 * @param nomArticle
 	 * @param description
 	 * @param dateDebutEncheres
@@ -42,6 +66,28 @@ public class Article {
 		this.nomArticle = nomArticle;
 		this.description = description;
 		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.prixInitial = prixInitial;
+		this.vendeur = vendeur;
+		this.categorie = categorie;
+		this.retrait = retrait;
+	}
+
+
+	/**
+	 * @param nomArticle
+	 * @param description
+	 * @param dateFinEncheres
+	 * @param prixInitial
+	 * @param vendeur
+	 * @param categorie
+	 * @param retrait
+	 */
+	public Article(String nomArticle, String description, LocalDate dateFinEncheres, int prixInitial,
+			Utilisateur vendeur, Categorie categorie, Retrait retrait) {
+		super();
+		this.nomArticle = nomArticle;
+		this.description = description;
 		this.dateFinEncheres = dateFinEncheres;
 		this.prixInitial = prixInitial;
 		this.vendeur = vendeur;

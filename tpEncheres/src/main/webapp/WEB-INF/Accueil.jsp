@@ -147,7 +147,7 @@
   			<img src="./images/test.png" alt="Description de l'image" width="200" height="200" border="0">
   
   			<div>
-			<h3>${articleVente.nomArticle }</h3> 
+  			<a href="<%=request.getContextPath() %>/ServletDetailVente?id=${articleVente.nombreArticle }"><h3>${articleVente.nomArticle }</h3> </a>
 			<div>Prix : ${articleVente.prixInitial }  points</div>
 			<div>Fin de l'enchère : ${articleVente.dateFinEncheres }</div>
 			<div>Vendeur : ${articleVente.vendeur.pseudo }</div>
@@ -156,6 +156,7 @@
 			</div>
 	<br>
 			<br>
+			
 		</c:forEach>
 
 	
