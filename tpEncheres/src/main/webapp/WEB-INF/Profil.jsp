@@ -12,7 +12,8 @@
 	<%@ include file="Header.jsp"%>
 	
 	<fieldset>
-		<h1>Profil</h1>
+	
+		<legend><h2>Profil</h2></legend>
 		
 		
 		<c:if test="${!empty sessionScope.utilisateurConnecte }"></c:if>
@@ -26,6 +27,7 @@
 		<p> Ville : ${utilisateurConnecte.ville } </p>
 		<a href="/tpEncheres/Accueil">Accueil</a>
 		<a href="/tpEncheres/ServletModifierProfil">Modifier</a>
+		
 		
 	</fieldset>
 

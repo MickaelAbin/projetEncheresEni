@@ -8,6 +8,7 @@
 <title>Inscription</title>
 </head>
 <body>
+
 	<%@ include file="Header.jsp"%>
 
 	<fieldset>
@@ -23,7 +24,7 @@
 			<br />
 			<br />
 			
-			<div>
+			<div class="position-absolute top-50 start-50 translate-middle">
 			    <label for="nom">Nom : </label>
 				<input type="text" name="nom" id="nom" required />
 		    </div>
@@ -41,7 +42,7 @@
 			
 			<div>
 			    <label for="nom">Email : </label>
-				<input type="text" name="email" id="email" required />
+				<input type="text" name="email" id="email" value="courriel@exemple.com" required />
 		    </div>
 			
 			<br />
