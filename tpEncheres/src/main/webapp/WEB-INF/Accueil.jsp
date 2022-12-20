@@ -45,19 +45,19 @@
 		</div>
 		<c:if test="${!empty utilisateurConnecte}">
 			<div>
-				<input type="radio" name="achats" value="Achats"/>
+				<input type="radio" name="achats" value="Achats"/>Achats
 				
-				<input type="checkbox" name="encheresOuvertes" value="enchères ouvertes">
-				<input type="checkbox" name="encheresEnCours" value="mes enchères en cours">
-				<input type="checkbox" name="encheresRemportees" value="mes enchères remportées">
+				<input type="checkbox" name="encheresOuvertes" value="enchères ouvertes">enchère ouverte
+				<input type="checkbox" name="encheresEnCours" value="mes enchères en cours">mes enchères en cours
+				<input type="checkbox" name="encheresRemportees" value="mes enchères remportées">mes enchères remportées
 			</div>
 			
 			<div>
-				<input type="radio" name="mesVentes" value="Mes ventes"/>
+				<input type="radio" name="mesVentes" value="Mes ventes"/>Mes ventes
 				
-				<input type="checkbox" name="ventesEnCours" value="mes ventes en cours">
-				<input type="checkbox" name="ventesNonDebutees" value="ventes non débutées">
-				<input type="checkbox" name="ventesTerminees" value="ventes terminées">
+				<input type="checkbox" name="ventesEnCours" value="mes ventes en cours">mes ventes en cours
+				<input type="checkbox" name="ventesNonDebutees" value="ventes non débutées">ventes non débutées
+				<input type="checkbox" name="ventesTerminees" value="ventes terminées">ventes terminées
 			</div>
 			
 			
