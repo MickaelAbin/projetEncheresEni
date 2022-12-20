@@ -6,16 +6,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/Profil.css" rel="stylesheet" type="text/css">
     <title>Profile Page</title>    
 </head>
 <body>
 	<%@ include file="Header.jsp"%>
 	
-	<fieldset>
+	<aside>
+    	<img src="./images/backgroundTPencheres .jpg" alt="background">
+    </aside>
 	
-		<legend><h2>Profil</h2></legend>
+		<h2>Profil</h2>
 		
-		
+		<nav class="liste">
 		<c:if test="${!empty sessionScope.utilisateurConnecte }"></c:if>
 		<p> Pseudo : ${utilisateurConnecte.pseudo } </p>
 		<p> Nom : ${utilisateurConnecte.nom } </p>
@@ -25,11 +28,10 @@
 		<p> Rue : ${utilisateurConnecte.rue } </p>
 		<p> Code Postal : ${utilisateurConnecte.codePostal } </p>
 		<p> Ville : ${utilisateurConnecte.ville } </p>
-		<a href="/tpEncheres/Accueil">Accueil</a>
 		<a href="/tpEncheres/ServletModifierProfil">Modifier</a>
+		</nav>
 		
-		
-	</fieldset>
+	
 
 </body>
 </html>
