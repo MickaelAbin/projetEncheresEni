@@ -62,6 +62,7 @@
 			
 			
 		</c:if>
+		
 		<input type="submit" name="connexion" value="Rechercher"/>
 	</form>
     	
