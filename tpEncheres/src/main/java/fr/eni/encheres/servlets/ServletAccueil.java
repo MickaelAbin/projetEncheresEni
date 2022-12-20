@@ -36,8 +36,19 @@ public class ServletAccueil extends HttpServlet {
 		//permet de recuperer toutes les catégories 
         List<Categorie> listeCategories = CategorieManager.getInstance().selectAll();
         session.setAttribute("listeCategories", listeCategories);
-        List<Article> articles = ArticleManager.getInstance().affichageVente();
+        List<Article> articles = new ArrayList<>();
 		
+        articles = ArticleManager.getInstance().affichageVente();
+        /*if (session.getAttribute("rechercheCategorie").equals("toutes les categories")) {
+        	articles = ArticleManager.getInstance().affichageVente();
+		}
+        else if(session.getAttribute("rechercheCategorie").toString().isEmpty()) {
+        	
+        }
+        else {
+        	int noCategorie = (int) session.getAttribute("rechercheCategorie");
+        	articles = ArticleManager.getInstance().affichageVente(noCategorie);
+        }*/
         session.setAttribute("listeArticles", articles);
 		
 		
@@ -48,26 +59,26 @@ public class ServletAccueil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		/*if (request.getParameter("categorie.value").equals("toutes")) {
+		
+		String test = request.getParameter("filtre");
+		session.setAttribute("test", test);
+		
+		if (request.getParameter("categorie").equals("toutes")) {
 			session.setAttribute("rechercheCategorie", "toutes les categories");
 		}
 		else {
-			session.setAttribute("rechercheCategorie", request.getParameter("categorie.value"));
+			session.setAttribute("rechercheCategorie", request.getParameter("categorie"));
 		}
 		
-		if (request.getParameter("filtre").equals("achats")) {
-			session.setAttribute("rechercheAchat", "Achats");
-		}
-		/*else {
-			session.removeAttribute("rechercheAchat");
-		}
-			
+		/*if (request.getParameter("filtre").equals("achats")) {
+			session.setAttribute("filtreAchatVente", "Achats");
+		}			
 		else if (request.getParameter("filtre").equals("mesVentes")) {
-			session.setAttribute("rechercheVente", "ventes");
-		}
+			session.setAttribute("filtreAchatVente", "ventes");
+		}*/
 		
 		
-		*/
+		
 		doGet(request, response);
 		
 		

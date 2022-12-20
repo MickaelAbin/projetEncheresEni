@@ -35,6 +35,8 @@ public class ArticleDAOjdbcImpl implements ArticleDAO {
 	
 	private static final String SEARCH_BY_ID ="SELECT ARTICLES_VENDUS.no_article, nom_article,prix_initial,date_fin_encheres,pseudo,description,libelle,RETRAITS.rue,RETRAITS.code_postal,RETRAITS.ville FROM ARTICLES_VENDUS INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_vendeur=UTILISATEURS.no_utilisateur INNER JOIN CATEGORIES ON ARTICLES_VENDUS.no_categorie=CATEGORIES.no_categorie INNER JOIN RETRAITS ON ARTICLES_VENDUS.no_article=RETRAITS.no_article where ARTICLES_VENDUS.no_article=?;";
 	
+	private final static String SELECT_ALL_BY_CATEGORIE = "SELECT ARTICLES_VENDUS.no_article,nom_article,prix_initial,date_fin_encheres,pseudo,description,libelle,RETRAITS.rue,RETRAITS.code_postal,RETRAITS.ville FROM ARTICLES_VENDUS INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_vendeur=UTILISATEURS.no_utilisateur INNER JOIN CATEGORIES ON ARTICLES_VENDUS.no_categorie=CATEGORIES.no_categorie INNER JOIN RETRAITS ON ARTICLES_VENDUS.no_article=RETRAITS.no_article where no_categorie=?;";
+
 	public List<Article> selectAll() {
 		List<Article> listes = new ArrayList<>();
 
@@ -153,6 +155,41 @@ System.out.println("test");
 		}
 	}
 
-	
+	public List<Article> selectAll(int noCategorie) {
+		List<Article> listes = new ArrayList<>();
+
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+
+			PreparedStatement pstmt = cnx.prepareStatement(SELECT_ALL_BY_CATEGORIE);
+			
+			pstmt.setInt(1,noCategorie);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				
+				int noArticle = rs.getInt("no_article");
+				String nom = rs.getString("nom_article");
+				int prixEntre = rs.getInt("prix_initial");
+				Date fin = rs.getDate("date_fin_encheres");
+				String vendeur = rs.getString("pseudo");
+				String description = rs.getString("description");
+				String libelle = rs.getString("libelle");
+				String rue = rs.getString("rue");
+				String codePostal = rs.getString("code_postal");
+				String ville = rs.getString("ville");
+				
+				
+			Categorie categorie = new Categorie(libelle);	
+			Retrait retrait = new Retrait(rue,codePostal,ville)	;
+			Utilisateur utilisateur = new Utilisateur(vendeur);
+			Article article = new Article( noArticle, nom,description, fin.toLocalDate(), prixEntre,utilisateur,categorie,retrait );
+				listes.add(article);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return listes;
+	}
 
 }

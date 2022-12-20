@@ -30,6 +30,10 @@ private static ArticleManager instance;
 		return DAOFactory.getArticlesDAO().selectAll();
 	}
 	
+	public List<Article> affichageVente(int noCategorie) {
+		return DAOFactory.getArticlesDAO().selectAll(noCategorie);
+	}
+	
 	public void delete(int idListe) {
 		//TODO: vérification des données
 		DAOFactory.getArticlesDAO().delete(idListe);

@@ -38,8 +38,11 @@
 	
 			<select name="categorie" id="categorie">
 				<option value="toutes">Toutes</option>
+				<option selected="selected" value="test">test</option>
 			    <c:forEach var="cat" items="${sessionScope.listeCategories}">
-					<option value="${cat.noCategorie }"><c:out value="${cat.libelle}"/></option>
+					<option value="${cat.noCategorie }" ${cat.noCategorie == rechercheCategorie ? 'selected="selected"' : ''}>
+						<c:out value="${cat.libelle}"/>
+					</option>
 				</c:forEach>
 			</select>
 			
@@ -55,20 +58,19 @@
 			</div>
 			
 			<div>
-				<input type="radio" name="filtre" value="mesVentes"/>Mes ventes
+				<input type="radio" name="filtre" value="mesVentes" ${filtreAchatVente == 'ventes' ? 'checked="checked"' : ''}/>Mes ventes
 				
 				<input type="checkbox" name="filtreVentes" value="ventesEnCours">mes ventes en cours
 				<input type="checkbox" name="filtreVentes" value="ventesNonDebutees">ventes non débutées
 				<input type="checkbox" name="filtreVentes" value="ventesTerminees">ventes terminées
 			</div>
 			
-			
 		</c:if>
 		
 		<input type="submit" name="connexion" value="Rechercher"/>
 	</form>
     	
-	
+	<c:if test="${empty listeArticles }">listes articles vide</c:if>
 		<c:forEach var="articleVente" items="${sessionScope.listeArticles }">
 			<div style= "border: 1px solid black; 
   background-color: lightgray">
