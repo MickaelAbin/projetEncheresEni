@@ -53,21 +53,21 @@ public class ServletAccueil extends HttpServlet {
 		}
 		else {
 			session.setAttribute("rechercheCategorie", request.getParameter("categorie.value"));
-		}*/
+		}
 		
 		if (request.getParameter("filtre").equals("achats")) {
 			session.setAttribute("rechercheAchat", "Achats");
 		}
 		/*else {
 			session.removeAttribute("rechercheAchat");
-		}*/
+		}
 			
 		else if (request.getParameter("filtre").equals("mesVentes")) {
 			session.setAttribute("rechercheVente", "ventes");
 		}
 		
 		
-		
+		*/
 		doGet(request, response);
 		
 		
