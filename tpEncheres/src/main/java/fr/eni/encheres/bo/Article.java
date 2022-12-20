@@ -28,6 +28,15 @@ public class Article {
 	
 	/**
 	 * @param nombreArticle
+	 */
+	public Article(int nombreArticle) {
+		super();
+		this.nombreArticle = nombreArticle;
+	}
+
+
+	/**
+	 * @param nombreArticle
 	 * @param nomArticle
 	 * @param description
 	 * @param dateFinEncheres

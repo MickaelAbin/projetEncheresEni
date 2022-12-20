@@ -8,6 +8,7 @@ import java.util.List;
 import fr.eni.encheres.bo.Article;
 import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dall.DAOFactory;
+import fr.eni.encheres.exception.ApplicationException;
 
 
 /**
@@ -37,7 +38,7 @@ private static ArticleManager instance;
 	public void ajouterArticle(Article article) {
 		DAOFactory.getArticlesDAO().insert(article);
 	}
-	/*public Article affichageArticle(int id) {
+	public Article affichageArticle(int id) throws ApplicationException {
 		return DAOFactory.getArticlesDAO().selectById( id);
-	}*/
+	}
 }

@@ -27,11 +27,19 @@
 			<div> ${article.description }</div>
 			<div>Prix : ${article.prixInitial }  points</div>
 			<div>Fin de l'enchère : ${article.dateFinEncheres }</div>
-			<div>Vendeur : ${article.vendeur.pseudo }</div>
 			<div>Retrait : ${article.retrait.rue } </div>
 			<div>${article.retrait.codePostal }  ${article.retrait.ville }</div>
+			<div>Vendeur : ${article.vendeur.pseudo }</div>
 			<div></div>
+		
+			<form action="<%=request.getContextPath()%>/ServletNouvelleEnchere" method="POST">
+			<input id="prodId" name="IdArticle" type="hidden" value="${article.nombreArticle }">
 			
+				<label for="tentacles">Ma Proposition:</label> <input type="number"
+			name="PRIX" step="5" min="0" max="1000"> 
+			<input type="submit" value="Enchérir">
+			</form>
+		
 			</div>
 			</div>
 	<br>

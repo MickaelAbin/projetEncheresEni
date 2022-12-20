@@ -91,7 +91,7 @@ System.out.println(article);
 		try {
 			ArticleManager.getInstance().ajouterArticle(article);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/Accueil");
 			rd.forward(request, response);
 		} catch (ServletException e) {
 			// TODO Auto-generated catch block
