@@ -48,12 +48,12 @@ public class ServletAccueil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		if (request.getParameter("categorie.value").equals("toutes")) {
+		/*if (request.getParameter("categorie.value").equals("toutes")) {
 			session.setAttribute("rechercheCategorie", "toutes les categories");
 		}
 		else {
 			session.setAttribute("rechercheCategorie", request.getParameter("categorie.value"));
-		}
+		}*/
 		
 		if (request.getParameter("filtre").equals("achats")) {
 			session.setAttribute("rechercheAchat", "Achats");
