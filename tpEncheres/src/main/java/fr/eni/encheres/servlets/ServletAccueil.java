@@ -35,9 +35,10 @@ public class ServletAccueil extends HttpServlet {
 		
 		//permet de recuperer toutes les catégories 
         List<Categorie> listeCategories = CategorieManager.getInstance().selectAll();
-        session.setAttribute("listeCategories", listeCategories);List<Article> articles = ArticleManager.getInstance().affichageVente();
+        session.setAttribute("listeCategories", listeCategories);
+        List<Article> articles = ArticleManager.getInstance().affichageVente();
 		
-        request.setAttribute("listeArticles", articles);
+        session.setAttribute("listeArticles", articles);
 		
 		
 		request.getRequestDispatcher("/WEB-INF/Accueil.jsp").forward(request, response);
@@ -45,7 +46,28 @@ public class ServletAccueil extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		
+		if (request.getParameter("categorie.value").equals("toutes")) {
+			session.setAttribute("rechercheCategorie", "toutes les categories");
+		}
+		else {
+			session.setAttribute("rechercheCategorie", request.getParameter("categorie.value"));
+		}
+		
+		if (request.getParameter("filtre").equals("achats")) {
+			session.setAttribute("rechercheAchat", "Achats");
+		}
+		/*else {
+			session.removeAttribute("rechercheAchat");
+		}*/
+			
+		else if (request.getParameter("filtre").equals("mesVentes")) {
+			session.setAttribute("rechercheVente", "ventes");
+		}
+		
+		
+		
 		doGet(request, response);
 		
 		

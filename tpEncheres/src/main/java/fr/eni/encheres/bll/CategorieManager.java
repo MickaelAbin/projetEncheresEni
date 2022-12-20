@@ -18,4 +18,9 @@ public class CategorieManager {
 	public List<Categorie> selectAll() {
 		return DAOFactory.getCategorieDAO().selectAll();
 	}
+	
+	public Categorie selectByLibelle(String libelle) {
+		return DAOFactory.getCategorieDAO().selectByLibelle(libelle);
+		
+	}
 }

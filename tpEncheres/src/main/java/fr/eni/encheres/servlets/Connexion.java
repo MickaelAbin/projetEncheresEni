@@ -43,7 +43,7 @@ public class Connexion extends HttpServlet {
 				request.getParameter("motDePasse")
 				);
 		String messageConnexion = UtilisateurManager.connexionUtilisateur(utilisateurConnexion);
-		session.setAttribute("messageConnexion", messageConnexion);
+		
 		String pseudo = utilisateurConnexion.getPseudo();
 		
 		Utilisateur utilisateurConnecte = null;
@@ -61,6 +61,7 @@ public class Connexion extends HttpServlet {
 			//this.getServletContext().getRequestDispatcher("/WEB-INF/MonProfil.jsp").forward(request, response);
 		}
 		else {
+			session.setAttribute("messageConnexion", messageConnexion);
 			doGet(request, response);
 		}
 		
