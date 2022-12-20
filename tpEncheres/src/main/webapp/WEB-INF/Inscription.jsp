@@ -12,11 +12,10 @@
 
 	<%@ include file="Header.jsp"%>
 
-	<fieldset>
-	
-		<legend>Inscription</legend>
 
-		<form  action="<%=request.getContextPath()%>/Inscription"  method="POST" >
+		<h2>Inscription</h2>
+
+		<form  action="<%=request.getContextPath()%>/Inscription"  method="POST" id=1 >
 		    <div>			
 				<input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" required />
 		    </div>
@@ -48,10 +47,10 @@
 			<div>
 				<input type="text" name="telephone" id="telephone" placeholder="Tel mobile" required />
 		    </div>
-			
-			<br />
-			<br />
-			
+		    </form>
+		    
+	    <form action="<%=request.getContextPath()%>/Inscription"  method="POST" id=2>
+	
 			<div>
 				<input type="text" name="rue" id="rue" placeholder="Rue"  required />
 		    </div>
@@ -87,14 +86,14 @@
 		    
 			<br />
 			<br />
-			
-			<div>
+						
+		</form>
+		<div>
 		    	<input type="submit" name="creer" />
 				<input type="reset" value="Annuler">
-		    </div>
 				
-		</form>
-	</fieldset>
+	    </div>
+	
 
 </body>
 </html>
