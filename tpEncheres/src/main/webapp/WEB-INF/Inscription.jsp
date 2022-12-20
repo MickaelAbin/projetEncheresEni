@@ -15,7 +15,7 @@
 
 		<h2>Inscription</h2>
 
-		<form  action="<%=request.getContextPath()%>/Inscription"  method="POST" id=1 >
+		<form  action="<%=request.getContextPath()%>/Inscription"  method="POST" >
 		    <div>			
 				<input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" required />
 		    </div>
@@ -47,10 +47,10 @@
 			<div>
 				<input type="text" name="telephone" id="telephone" placeholder="Tel mobile" required />
 		    </div>
-		    </form>
-		    
-	    <form action="<%=request.getContextPath()%>/Inscription"  method="POST" id=2>
-	
+			
+			<br />
+			<br />
+			
 			<div>
 				<input type="text" name="rue" id="rue" placeholder="Rue"  required />
 		    </div>
@@ -86,13 +86,13 @@
 		    
 			<br />
 			<br />
-						
-		</form>
-		<div>
+			
+			<div>
 		    	<input type="submit" name="creer" />
 				<input type="reset" value="Annuler">
+		    </div>
 				
-	    </div>
+		</form>
 	
 
 </body>
