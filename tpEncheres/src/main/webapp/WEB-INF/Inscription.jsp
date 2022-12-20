@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="./css/Inscription.css" rel="stylesheet" type="text/css">
 <title>Inscription</title>
 </head>
 <body>
@@ -16,81 +17,71 @@
 		<legend>Inscription</legend>
 
 		<form  action="<%=request.getContextPath()%>/Inscription"  method="POST" >
-		    <div>
-			    <label for="nom">Pseudo : </label>
-				<input type="text" name="pseudo" id="pseudo" required />
+		    <div>			
+				<input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" required />
 		    </div>
 		    
 			<br />
 			<br />
 			
-			<div class="position-absolute top-50 start-50 translate-middle">
-			    <label for="nom">Nom : </label>
-				<input type="text" name="nom" id="nom" required />
+			<div>
+				<input type="text" name="nom" id="nom" placeholder="Nom" required />
 		    </div>
 			
 			<br />
 			<br />
 			
 			<div>
-			    <label for="nom">Prenom : </label>
-				<input type="text" name="prenom" id="prenom" required />
+				<input type="text" name="prenom" id="prenom" placeholder="Prenom"  required />
 		    </div>
 			
 			<br />
 			<br />
 			
 			<div>
-			    <label for="nom">Email : </label>
-				<input type="text" name="email" id="email" value="courriel@exemple.com" required />
+				<input type="text" name="email" id="email" placeholder="exemple@.com"  required />
 		    </div>
 			
 			<br />
 			<br />
 			
 			<div>
-			    <label for="nom">Telephone : </label>
-				<input type="text" name="telephone" id="telephone" required />
+				<input type="text" name="telephone" id="telephone" placeholder="Tel mobile" required />
 		    </div>
 			
 			<br />
 			<br />
 			
 			<div>
-			    <label for="nom">Rue : </label>
-				<input type="text" name="rue" id="rue" required />
+				<input type="text" name="rue" id="rue" placeholder="Rue"  required />
 		    </div>
 			
 			<br />
 			<br />
 			
 			<div>
-			    <label for="nom">Code Postal : </label>
-				<input type="text" name="codePostal" id="codePostal" required />
+				<input type="text" name="codePostal" id="codePostal" placeholder="Code Postal" required />
 		    </div>
 			
 			<br />
 			<br />
 			
 			<div>
-		    	<label for="nom">Ville : </label>
-				<input type="text" name="ville" id="ville" required />
+				<input type="text" name="ville" id="ville" placeholder="Ville" required />
 		    </div>
 			
 			<br />
 			<br />
 			
 			<div>	
-				<label for="nom">Mot de passe : </label>
-				<input type="password" name="motDePasse" id="motDePasse" required />
+				<input type="password" name="motDePasse" id="motDePasse" placeholder="Mot de Passe" required />
 		    </div>
 			
 			<br />
 			<br />
 			
 			<div>
-		    	<label for="nom">Confirmation : </label>
-				<input type="password" name="remotDePasse" id="remotDePasse" required />
+				<input type="password" name="remotDePasse" id="remotDePasse" placeholder="Confirmation" required />
 			
 		    </div>
 		    
