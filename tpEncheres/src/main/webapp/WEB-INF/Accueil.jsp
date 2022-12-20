@@ -153,6 +153,7 @@
 			<div>Fin de l'enchère : ${articleVente.dateFinEncheres }</div>
 			<div>Vendeur : ${articleVente.vendeur.pseudo }</div>
 			
+			
 			</div>
 			</div>
 	<br>
