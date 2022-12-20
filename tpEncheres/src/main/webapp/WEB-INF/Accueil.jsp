@@ -47,9 +47,9 @@
 		</div>
 		<c:if test="${!empty utilisateurConnecte}">
 			<div>
-				<input type="radio" name="filtre" value="achats"/>Achats
+				<input type="radio" name="filtre" value="achats" checked="checked"/>Achats
 				
-				<input type="checkbox" name="filtreAchats" value="encheresOuvertes">enchère ouverte
+				<input type="checkbox" name="filtreAchats" value="encheresOuvertes" checked="checked">enchère ouverte
 				<input type="checkbox" name="filtreAchats" value="encheresEnCours">mes enchères en cours
 				<input type="checkbox" name="filtreAchats" value="encheresRemportees">mes enchères remportées
 			</div>

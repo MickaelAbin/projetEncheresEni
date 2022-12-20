@@ -7,6 +7,6 @@ import fr.eni.encheres.bo.Categorie;
 
 		public interface CategorieDAO {
 		List<Categorie> selectAll();
-	
+		Categorie selectByLibelle(String libelle);
 		void insert(Categorie enchere) ;
 }

@@ -37,7 +37,7 @@ private static ArticleManager instance;
 	public void ajouterArticle(Article article) {
 		DAOFactory.getArticlesDAO().insert(article);
 	}
-	public Article affichageArticle(int id) {
+	/*public Article affichageArticle(int id) {
 		return DAOFactory.getArticlesDAO().selectById( id);
-	}
+	}*/
 }

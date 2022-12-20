@@ -14,7 +14,7 @@ import fr.eni.encheres.bo.Categorie;
  */
 public interface ArticleDAO {
 	List<Article> selectAll();
-	Categorie selectByLibelle(String libelle);
+	
 	
 	void delete(int id);
 }
