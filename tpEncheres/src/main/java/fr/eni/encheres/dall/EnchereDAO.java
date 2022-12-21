@@ -6,9 +6,12 @@ import fr.eni.encheres.bo.Enchere;
 
 
 
+
 public interface EnchereDAO {
 	
 	List<Enchere> selectAll();
 	
 	void insert(Enchere enchere) ;
+	
+	
 }

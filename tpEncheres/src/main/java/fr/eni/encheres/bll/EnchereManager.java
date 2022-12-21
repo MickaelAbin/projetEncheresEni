@@ -28,4 +28,5 @@ public class EnchereManager {
 	public void ajouterEnchere(Enchere enchere) {
 		DAOFactory.getEnchereDAO().insert(enchere);
 	}
+	
 }

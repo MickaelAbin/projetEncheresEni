@@ -1,6 +1,3 @@
-/**
- * 
- */
 package fr.eni.encheres.dall;
 
 import java.sql.Connection;
@@ -25,9 +22,9 @@ import fr.eni.encheres.exception.ApplicationException;
  */
 public class ArticleDAOjdbcImpl implements ArticleDAO {
 
-	private final static String AJOUTER_NOUVELLE_VENTE = "insert into ARTICLES_VENDUS  (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,no_vendeur,no_categorie)values (?,?,?,?,?,?,?);";
+	private final static String AJOUTER_NOUVELLE_VENTE = "insert into ARTICLES_VENDUS  (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,no_vendeur,no_categorie)values (?,?,?,?,?,?,?,?);";
 
-	private final static String SELECT_ALL = "SELECT ARTICLES_VENDUS.no_article,nom_article,prix_initial,date_fin_encheres,pseudo,description,libelle,RETRAITS.rue,RETRAITS.code_postal,RETRAITS.ville FROM ARTICLES_VENDUS INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_vendeur=UTILISATEURS.no_utilisateur INNER JOIN CATEGORIES ON ARTICLES_VENDUS.no_categorie=CATEGORIES.no_categorie INNER JOIN RETRAITS ON ARTICLES_VENDUS.no_article=RETRAITS.no_article;";
+	private final static String SELECT_ALL = "SELECT ARTICLES_VENDUS.no_article,nom_article,prix_vente,date_fin_encheres,pseudo,description,libelle,RETRAITS.rue,RETRAITS.code_postal,RETRAITS.ville FROM ARTICLES_VENDUS INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_vendeur=UTILISATEURS.no_utilisateur INNER JOIN CATEGORIES ON ARTICLES_VENDUS.no_categorie=CATEGORIES.no_categorie INNER JOIN RETRAITS ON ARTICLES_VENDUS.no_article=RETRAITS.no_article;";
 
 	private final static String DELETE = "DELETE FROM ARTICLES_VENDUS WHERE idListe=?;";
 
@@ -49,7 +46,7 @@ public class ArticleDAOjdbcImpl implements ArticleDAO {
 				
 				int noArticle = rs.getInt("no_article");
 				String nom = rs.getString("nom_article");
-				int prixEntre = rs.getInt("prix_initial");
+				int prixEntre = rs.getInt("prix_vente");
 				Date fin = rs.getDate("date_fin_encheres");
 				String vendeur = rs.getString("pseudo");
 				String description = rs.getString("description");
@@ -131,8 +128,9 @@ public class ArticleDAOjdbcImpl implements ArticleDAO {
 			pStmt.setDate(3, Date.valueOf(article.getDateDebutEncheres()));
 			pStmt.setDate(4, Date.valueOf(article.getDateFinEncheres()));
 			pStmt.setInt(5, article.getPrixInitial());
-			pStmt.setInt(6, article.getVendeur().getNoUtilisateur());
-			pStmt.setInt(7, article.getCategorie().getNoCategorie());
+			pStmt.setInt(6, article.getPrixInitial());
+			pStmt.setInt(7, article.getVendeur().getNoUtilisateur());
+			pStmt.setInt(8, article.getCategorie().getNoCategorie());
 			pStmt.executeUpdate();
 			ResultSet rs = pStmt.getGeneratedKeys();
 			if (rs.next()) {

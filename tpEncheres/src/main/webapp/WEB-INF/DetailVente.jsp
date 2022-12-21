@@ -36,7 +36,7 @@
 			<input id="prodId" name="IdArticle" type="hidden" value="${article.nombreArticle }">
 			
 				<label for="tentacles">Ma Proposition:</label> <input type="number"
-			name="PRIX" step="5" min="0" max="1000"> 
+			name="PRIX" step="5" min="${article.prixInitial+1 }" max="1000"> 
 			<input type="submit" value="Enchérir">
 			</form>
 		
