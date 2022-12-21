@@ -54,18 +54,11 @@ public class ServletNouvelleEnchere extends HttpServlet {
         int prix = Integer.parseInt(request.getParameter("PRIX"));
         LocalDate dateDuJour = LocalDate.now();
         Enchere enchere = new Enchere(acheteur,article,dateDuJour,prix);
-        try {
-			EnchereManager.getInstance().ajouterEnchere(enchere);
+		
+        EnchereManager.getInstance().ajouterEnchere(enchere);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/Accueil");
-			rd.forward(request, response);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		response.sendRedirect("/tpEncheres/Accueil");
+		
         
 	}
 

@@ -62,7 +62,7 @@ public class ServletAccueil extends HttpServlet {
 		String test = request.getParameter("filtre");
 		session.setAttribute("test", test);
 		
-		if (request.getParameter("categorie").equals("toutes")|| request.getParameter("categorie")==null) {
+		if (request.getParameter("categorie").equals("toutes")) {
 			session.removeAttribute("rechercheCategorie");
 		}
 		else {
