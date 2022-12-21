@@ -33,12 +33,12 @@
 			<div></div>
 		
 			<form action="<%=request.getContextPath()%>/ServletNouvelleEnchere" method="POST">
-			<input id="prodId" name="IdArticle" type="hidden" value="${article.nombreArticle }">
+				<input id="prodId" name="IdArticle" type="hidden" value="${article.nombreArticle }">
 			
 				<label for="tentacles">Ma Proposition:</label> <input type="number"
-			name="PRIX" step="5" min="${article.prixVente+1 }" max="1000"> 
-			<input type="submit" value="Enchérir">
-			<c:if test="${!empty erreurEnchere }"><p style="color:red">${erreurEnchere} </p></c:if>
+					name="PRIX" step="5" min="${article.prixVente+1 }" max="1000"> 
+				<c:if test="${!empty utilisateurConnecte }"><input type="submit" value="Enchérir"></c:if>
+				<c:if test="${empty utilisateurConnecte }"><p style="color:red">Vous devez etre connecté pour pouvoir encherir</p></c:if>
 			</form>
 		
 			</div>

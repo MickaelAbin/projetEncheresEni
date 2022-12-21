@@ -44,7 +44,6 @@ public class ServletNouvelleEnchere extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("je suis dans la methode post");
 		HttpSession session = request.getSession();
         
 		if (session.getAttribute("utilisateurConnecte") != null) {
@@ -58,11 +57,14 @@ public class ServletNouvelleEnchere extends HttpServlet {
 	        Enchere enchere = new Enchere(acheteur,article,dateDuJour,prix);
 			
 	        EnchereManager.getInstance().ajouterEnchere(enchere);
-				
+	        session.removeAttribute("idArticle");
 			response.sendRedirect("/tpEncheres/Accueil");
 		}
 		else {
-			session.setAttribute("erreurEnchere", "Vous devez etre connecté pour pouvoir encherir");
+			int idArticle = (int) session.getAttribute("idArticle");
+			String url = "/tpEncheres/ServletDetailVente?id=" + String.valueOf(idArticle);
+			//System.out.println(url);
+			response.sendRedirect(url);
 		}
         
 	}
