@@ -42,6 +42,17 @@ public class Enchere {
 
 
 	/**
+	 * @param acheteur
+	 * @param montantEnchere
+	 */
+	public Enchere(Utilisateur acheteur, int montantEnchere) {
+		super();
+		this.acheteur = acheteur;
+		this.montantEnchere = montantEnchere;
+	}
+
+
+	/**
 	 * @return the noEnchere
 	 */
 	public int getNoEnchere() {

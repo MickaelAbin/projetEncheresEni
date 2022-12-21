@@ -18,7 +18,9 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 	private final static String SELECT_ALL = "SELECT * FROM ENCHERES;";
 	private final static String AJOUTER_NOUVELLE_ENCHERE = "insert into ENCHERES  (no_acheteur,no_article,date_enchere,montant_enchere)values (?,?,?,?);";
 	private final static String UPDATE_PRIX_VENTE = "UPDATE ARTICLES_VENDUS set prix_vente=? where no_article=?";
-
+	private final static String UPDATE_CREDIT= "UPDATE UTILISATEURS set credit= credit -? where no_utilisateur=?";
+	private static final String SEARCH_PLUS_GROSSE_ENCHERE ="SELECT no_utilisateur,ENCHERES.montant_enchere FROM UTILISATEURS INNER JOIN ENCHERES ON UTILISATEURS.no_utilisateur=ENCHERES.no_acheteur  where (montant_enchere =( SELECT MAX(montant_enchere)from ENCHERES where no_article=?));";
+	private static final String UPDATE_CREDIT_PERDANT = "UPDATE UTILISATEURS set credit= credit + ? where no_utilisateur=?";
 	@Override
 	public List<Enchere> selectAll() {
 		List<Enchere> encheres = new ArrayList<>();
@@ -51,22 +53,50 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 	public void insert(Enchere enchere) {
 
 		try (Connection cnx = ConnectionProvider.getConnection()) {
-			PreparedStatement pStmt = cnx.prepareStatement(AJOUTER_NOUVELLE_ENCHERE);
-			pStmt.setInt(1, enchere.getNoAcheteur().getNoUtilisateur());
-			pStmt.setInt(2, enchere.getNoArticle().getNombreArticle());
-			pStmt.setDate(3, Date.valueOf(enchere.getDateEnchere()));
-			pStmt.setInt(4, enchere.getMontantEnchere());
-			System.out.println(enchere);
-			pStmt.executeUpdate();
-
-			PreparedStatement pStmt2 = cnx.prepareStatement(UPDATE_PRIX_VENTE);
-			pStmt2.setInt(1, enchere.getMontantEnchere());
+			
+			PreparedStatement pStmt = cnx.prepareStatement(SEARCH_PLUS_GROSSE_ENCHERE);
+			pStmt.setInt(1,enchere.getNoArticle().getNombreArticle());
+			ResultSet rs = pStmt.executeQuery();
+			
+			System.out.println(rs);
+			int montantEnchere = 0;
+			int noUtilsateur = 0;
+			if (rs.next()) {
+				 noUtilsateur = rs.getInt("no_utilisateur");
+				
+				 montantEnchere = rs.getInt("montant_enchere");
+		
+			}
+			
+			PreparedStatement pStmt2 = cnx.prepareStatement(AJOUTER_NOUVELLE_ENCHERE);
+			pStmt2.setInt(1, enchere.getNoAcheteur().getNoUtilisateur());
 			pStmt2.setInt(2, enchere.getNoArticle().getNombreArticle());
-			System.out.println("test enchere");
+			pStmt2.setDate(3, Date.valueOf(enchere.getDateEnchere()));
+			pStmt2.setInt(4, enchere.getMontantEnchere());
 			System.out.println(enchere);
 			pStmt2.executeUpdate();
-			System.out.println("test enchere");
+
+			PreparedStatement pStmt3 = cnx.prepareStatement(UPDATE_PRIX_VENTE);
+			pStmt3.setInt(1, enchere.getMontantEnchere());
+			pStmt3.setInt(2, enchere.getNoArticle().getNombreArticle());
 			System.out.println(enchere);
+			pStmt3.executeUpdate();
+			System.out.println(enchere);
+			
+			PreparedStatement pStmt4 = cnx.prepareStatement(UPDATE_CREDIT);
+			pStmt4.setInt(1, enchere.getMontantEnchere());
+			pStmt4.setInt(2, enchere.getNoAcheteur().getNoUtilisateur());
+			
+			System.out.println(enchere);
+			pStmt4.executeUpdate();
+			
+			System.out.println(enchere);
+			
+			PreparedStatement pStmt5 = cnx.prepareStatement(UPDATE_CREDIT_PERDANT);
+			pStmt5.setInt(1, montantEnchere);
+			pStmt5.setInt(2, noUtilsateur);
+			pStmt5.executeUpdate();
+			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
