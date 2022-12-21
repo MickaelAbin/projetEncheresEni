@@ -15,7 +15,7 @@ import fr.eni.encheres.exception.ApplicationException;
  */
 public interface ArticleDAO {
 	List<Article> selectAll();
-	
+	List<Article> selectAll(int noCategorie);
 	
 	void delete(int id);
 	public Article selectById(int id) throws ApplicationException ;
