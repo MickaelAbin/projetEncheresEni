@@ -46,19 +46,24 @@ public class ServletNouvelleEnchere extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("je suis dans la methode post");
 		HttpSession session = request.getSession();
-        Utilisateur utilisateurSession = (Utilisateur) session.getAttribute("utilisateurConnecte");
-        Utilisateur acheteur = new Utilisateur(utilisateurSession.getNoUtilisateur());
-        int idArticle =  Integer.parseInt(request.getParameter("IdArticle"));
-        Article article = new Article(idArticle);
-       
-        int prix = Integer.parseInt(request.getParameter("PRIX"));
-        LocalDate dateDuJour = LocalDate.now();
-        Enchere enchere = new Enchere(acheteur,article,dateDuJour,prix);
-		
-        EnchereManager.getInstance().ajouterEnchere(enchere);
+        
+		if (session.getAttribute("utilisateurConnecte") != null) {
+			Utilisateur utilisateurSession = (Utilisateur) session.getAttribute("utilisateurConnecte");
+	        Utilisateur acheteur = new Utilisateur(utilisateurSession.getNoUtilisateur());
+	        int idArticle =  Integer.parseInt(request.getParameter("IdArticle"));
+	        Article article = new Article(idArticle);
+	       
+	        int prix = Integer.parseInt(request.getParameter("PRIX"));
+	        LocalDate dateDuJour = LocalDate.now();
+	        Enchere enchere = new Enchere(acheteur,article,dateDuJour,prix);
 			
-		response.sendRedirect("/tpEncheres/Accueil");
-		
+	        EnchereManager.getInstance().ajouterEnchere(enchere);
+				
+			response.sendRedirect("/tpEncheres/Accueil");
+		}
+		else {
+			session.setAttribute("erreurEnchere", "Vous devez etre connecté pour pouvoir encherir");
+		}
         
 	}
 
