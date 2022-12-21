@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -42,25 +43,25 @@
 			name="PRIX" step="5" min="0" max="1000"> <br> <br>
 
 		Début de l'enchère : <input type="date" name="dateDebut"
-			value="2022-07-22" min="2022-01-01" max="2025-12-31"> <br>
+			value="${LocalDate.now()}" min="2022-01-01" max="2025-12-31"> <br>
 		<br> Fin de l'enchère : <input type="date" name="dateFin"
-			value="2022-07-22" min="2022-01-01" max="2025-12-31"> <br>
+			value="${LocalDate.now()}" min="2022-01-01" max="2025-12-31"> <br>
 		<br>
 		<fieldset>
 			<legend>Retrait</legend>
 			<table>
 				<tr>
 					<td><label for="rue">Rue : </label></td>
-					<td><input type="text" name="rue" id="rue" /> <br /></td>
+					<td><input type="text" name="rue" id="rue"value=${utilisateurConnecte.rue } /> <br /></td>
 				</tr>
 
 				<tr>
 					<td><label for="nom">Code postal : </label></td>
-					<td><input type="number" name="codePostal" /> <br /></td>
+					<td><input type="number" name="codePostal"value=${utilisateurConnecte.codePostal } /> <br /></td>
 				</tr>
 				<tr>
 					<td><label for="ville">Ville : </label></td>
-					<td><input type="text" name="ville" id="ville" /> <br /></td>
+					<td><input type="text" name="ville" id="ville"value=${utilisateurConnecte.ville } /> <br /></td>
 				</tr>
 
 

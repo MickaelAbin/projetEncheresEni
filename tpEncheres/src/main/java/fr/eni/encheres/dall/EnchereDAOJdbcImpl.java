@@ -56,13 +56,17 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 			pStmt.setInt(2, enchere.getNoArticle().getNombreArticle());
 			pStmt.setDate(3, Date.valueOf(enchere.getDateEnchere()));
 			pStmt.setInt(4, enchere.getMontantEnchere());
-
+			System.out.println(enchere);
 			pStmt.executeUpdate();
 
 			PreparedStatement pStmt2 = cnx.prepareStatement(UPDATE_PRIX_VENTE);
 			pStmt2.setInt(1, enchere.getMontantEnchere());
-			pStmt2.setInt(1, enchere.getNoArticle().getNombreArticle());
+			pStmt2.setInt(2, enchere.getNoArticle().getNombreArticle());
+			System.out.println("test enchere");
+			System.out.println(enchere);
 			pStmt2.executeUpdate();
+			System.out.println("test enchere");
+			System.out.println(enchere);
 
 		} catch (SQLException e) {
 			e.printStackTrace();

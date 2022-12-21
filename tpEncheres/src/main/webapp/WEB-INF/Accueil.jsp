@@ -78,7 +78,7 @@
   
   			<div>
   			<a href="<%=request.getContextPath() %>/ServletDetailVente?id=${articleVente.nombreArticle }"><h3>${articleVente.nomArticle }</h3> </a>
-			<div>Prix : ${articleVente.prixInitial }  points</div>
+			<div>Prix : ${articleVente.prixVente }  points</div>
 			<div>Fin de l'enchère : ${articleVente.dateFinEncheres }</div>
 			<div>Vendeur : ${articleVente.vendeur.pseudo }</div>
 			

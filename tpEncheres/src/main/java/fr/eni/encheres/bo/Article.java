@@ -40,23 +40,26 @@ public class Article {
 	 * @param nomArticle
 	 * @param description
 	 * @param dateFinEncheres
-	 * @param prixInitial
+	 * @param prixVente
 	 * @param vendeur
 	 * @param categorie
 	 * @param retrait
 	 */
-	public Article(int nombreArticle, String nomArticle, String description, LocalDate dateFinEncheres, int prixInitial,
+	public Article(int nombreArticle, String nomArticle, String description, LocalDate dateFinEncheres, int prixVente,
 			Utilisateur vendeur, Categorie categorie, Retrait retrait) {
 		super();
 		this.nombreArticle = nombreArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
 		this.dateFinEncheres = dateFinEncheres;
-		this.prixInitial = prixInitial;
+		this.prixVente = prixVente;
 		this.vendeur = vendeur;
 		this.categorie = categorie;
 		this.retrait = retrait;
 	}
+
+
+	
 
 
 	/**

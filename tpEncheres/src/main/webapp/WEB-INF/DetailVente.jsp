@@ -25,7 +25,7 @@
   			<div>
 			<div> ${article.nomArticle }</div>
 			<div> ${article.description }</div>
-			<div>Prix : ${article.prixInitial }  points</div>
+			<div>Prix : ${article.prixVente }  points</div>
 			<div>Fin de l'enchère : ${article.dateFinEncheres }</div>
 			<div>Retrait : ${article.retrait.rue } </div>
 			<div>${article.retrait.codePostal }  ${article.retrait.ville }</div>
@@ -36,8 +36,9 @@
 			<input id="prodId" name="IdArticle" type="hidden" value="${article.nombreArticle }">
 			
 				<label for="tentacles">Ma Proposition:</label> <input type="number"
-			name="PRIX" step="5" min="${article.prixInitial+1 }" max="1000"> 
+			name="PRIX" step="5" min="${article.prixVente+1 }" max="1000"> 
 			<input type="submit" value="Enchérir">
+			<c:if test="${!empty erreurEnchere }"><p style="color:red">${erreurEnchere} </p></c:if>
 			</form>
 		
 			</div>
