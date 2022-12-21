@@ -38,7 +38,6 @@
 	
 			<select name="categorie" id="categorie">
 				<option value="toutes">Toutes</option>
-				<option selected="selected" value="test">test</option>
 			    <c:forEach var="cat" items="${sessionScope.listeCategories}">
 					<option value="${cat.noCategorie }" ${cat.noCategorie == rechercheCategorie ? 'selected="selected"' : ''}>
 						<c:out value="${cat.libelle}"/>
@@ -46,7 +45,7 @@
 				</c:forEach>
 			</select>
 			
-			<div>${rechercheCategorie}</div>
+			<div>${testCat}</div>
 		</div>
 		<c:if test="${!empty utilisateurConnecte}">
 			<div>

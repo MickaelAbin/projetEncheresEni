@@ -35,7 +35,7 @@ public class ArticleDAOjdbcImpl implements ArticleDAO {
 	
 	private static final String SEARCH_BY_ID ="SELECT ARTICLES_VENDUS.no_article, nom_article,prix_initial,date_fin_encheres,pseudo,description,libelle,RETRAITS.rue,RETRAITS.code_postal,RETRAITS.ville FROM ARTICLES_VENDUS INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_vendeur=UTILISATEURS.no_utilisateur INNER JOIN CATEGORIES ON ARTICLES_VENDUS.no_categorie=CATEGORIES.no_categorie INNER JOIN RETRAITS ON ARTICLES_VENDUS.no_article=RETRAITS.no_article where ARTICLES_VENDUS.no_article=?;";
 	
-	private final static String SELECT_ALL_BY_CATEGORIE = "SELECT ARTICLES_VENDUS.no_article,nom_article,prix_initial,date_fin_encheres,pseudo,description,libelle,RETRAITS.rue,RETRAITS.code_postal,RETRAITS.ville FROM ARTICLES_VENDUS INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_vendeur=UTILISATEURS.no_utilisateur INNER JOIN CATEGORIES ON ARTICLES_VENDUS.no_categorie=CATEGORIES.no_categorie INNER JOIN RETRAITS ON ARTICLES_VENDUS.no_article=RETRAITS.no_article where no_categorie=?;";
+	private final static String SELECT_ALL_BY_CATEGORIE = "SELECT ARTICLES_VENDUS.no_article,nom_article,prix_initial,date_fin_encheres,pseudo,description,libelle,RETRAITS.rue,RETRAITS.code_postal,RETRAITS.ville FROM ARTICLES_VENDUS INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_vendeur=UTILISATEURS.no_utilisateur INNER JOIN CATEGORIES ON ARTICLES_VENDUS.no_categorie=CATEGORIES.no_categorie INNER JOIN RETRAITS ON ARTICLES_VENDUS.no_article=RETRAITS.no_article where ARTICLES_VENDUS.no_categorie=?;";
 
 	public List<Article> selectAll() {
 		List<Article> listes = new ArrayList<>();

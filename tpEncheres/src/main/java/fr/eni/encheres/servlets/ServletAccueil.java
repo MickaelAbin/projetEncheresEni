@@ -38,17 +38,16 @@ public class ServletAccueil extends HttpServlet {
         session.setAttribute("listeCategories", listeCategories);
         List<Article> articles = new ArrayList<>();
 		
-        articles = ArticleManager.getInstance().affichageVente();
-        /*if (session.getAttribute("rechercheCategorie").equals("toutes les categories")) {
+//        articles = ArticleManager.getInstance().affichageVente();
+        if (session.getAttribute("rechercheCategorie")== null) {
         	articles = ArticleManager.getInstance().affichageVente();
+        
 		}
-        else if(session.getAttribute("rechercheCategorie").toString().isEmpty()) {
-        	
-        }
         else {
-        	int noCategorie = (int) session.getAttribute("rechercheCategorie");
+        	int noCategorie = Integer.parseInt(String.valueOf(session.getAttribute("rechercheCategorie"))) ;
+        	
         	articles = ArticleManager.getInstance().affichageVente(noCategorie);
-        }*/
+        }
         session.setAttribute("listeArticles", articles);
 		
 		
@@ -64,7 +63,7 @@ public class ServletAccueil extends HttpServlet {
 		session.setAttribute("test", test);
 		
 		if (request.getParameter("categorie").equals("toutes")) {
-			session.setAttribute("rechercheCategorie", "toutes les categories");
+			session.removeAttribute("rechercheCategorie");
 		}
 		else {
 			session.setAttribute("rechercheCategorie", request.getParameter("categorie"));
