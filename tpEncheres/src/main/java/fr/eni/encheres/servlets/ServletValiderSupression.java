@@ -8,30 +8,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class SerrvletsProfil
+ * Servlet implementation class ServletValiderSupression
  */
-@WebServlet(description = "permet de voir son profil", urlPatterns = {"/MonProfil"})
-public class ServletsMonProfil extends HttpServlet {
+@WebServlet("/ServletValiderSupression")
+public class ServletValiderSupression extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    
-    public ServletsMonProfil() {
+    public ServletValiderSupression() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		this.getServletContext().getRequestDispatcher("/WEB-INF/ValiderSupression.jsp").forward(request, response);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request, response);
+		
 		doGet(request, response);
 	}
 

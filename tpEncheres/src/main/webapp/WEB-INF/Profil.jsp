@@ -29,6 +29,7 @@
 		<p> Code Postal : ${utilisateurConnecte.codePostal } </p>
 		<p> Ville : ${utilisateurConnecte.ville } </p>
 		<a href="/tpEncheres/ServletModifierProfil">Modifier</a>
+		<a href="/tpEncheres/ServletValiderSupression">Supprimer</a>
 		</div>
 		
 	

@@ -23,7 +23,7 @@ public class UtilisateurManager {
 		}
 		
 		public void delete(int idListe) {
-			//TODO: vérification des données
+			
 			DAOFactory.getUtilisateurDAO().delete(idListe);
 		}
 		
@@ -64,4 +64,8 @@ public class UtilisateurManager {
 		public void modifier(Utilisateur utilisateur) {
 			 DAOFactory.getUtilisateurDAO().modifier(utilisateur);
 		}
+
+		public Utilisateur getUtilisateurByPseudo(String pseudo) {
+	        return DAOFactory.selectUtilisateurByPseudo(pseudo);
+	    }
 }
