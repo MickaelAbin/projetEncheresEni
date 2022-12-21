@@ -18,7 +18,7 @@
 	
 		<h2>Profil</h2>
 		
-		<nav class="liste">
+		<div class="liste">
 		<c:if test="${!empty sessionScope.utilisateurConnecte }"></c:if>
 		<p> Pseudo : ${utilisateurConnecte.pseudo } </p>
 		<p> Nom : ${utilisateurConnecte.nom } </p>
@@ -29,7 +29,7 @@
 		<p> Code Postal : ${utilisateurConnecte.codePostal } </p>
 		<p> Ville : ${utilisateurConnecte.ville } </p>
 		<a href="/tpEncheres/ServletModifierProfil">Modifier</a>
-		</nav>
+		</div>
 		
 	
 

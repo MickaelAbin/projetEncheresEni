@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+body{
+	overflow: scroll;
+	
+}
 h2{
 	color:red;
 	background-color: blue;
