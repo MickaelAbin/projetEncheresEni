@@ -6,7 +6,7 @@
 <link href="./css/Header.css" rel="stylesheet" type="text/css">
 <header>
   
-	<h2><a href="<%=request.getContextPath()%>/Accueil">ENI-Enchères</a></h2>
+	<h1><a href="<%=request.getContextPath()%>/Accueil">ENI-Enchères</a></h1>
 	<div>
 		<c:if test="${!empty utilisateurConnecte}">
 			<a href="<%=request.getContextPath()%>/MonProfil">Mon profil</a>
