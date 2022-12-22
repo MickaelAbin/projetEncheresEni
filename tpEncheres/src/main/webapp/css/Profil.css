@@ -8,11 +8,12 @@ body{
 .liste{
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	position: relative;
-	margin-left: 90ch;
+	margin-left: 87ch;
 	top: 15ch;
 }
 
 h2{
+	align-items: center;
 	position: relative;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.75rem;

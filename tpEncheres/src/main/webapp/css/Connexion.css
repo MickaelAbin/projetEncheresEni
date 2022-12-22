@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+.Identifiant{
+	margin-left: 102ch;
+	 position: relative;
+     top: 30ch;
+}
+
+.MDP{
+	margin-left: 100ch;
+	 position: relative;
+     top: 23ch;
+}
+
+.Co{
+	position: relative;
+	width: 10%;
+	height: 50px;
+	top:   33ch;
+	margin-left: 119ch;
+    color:#000;
+    box-shadow:3px 8px #2a2a2a;
+}
+
+.Crea{
+	position: relative;
+	top:   35ch;
+	margin-left: 110ch;
+	border: 1px solid black;
+	padding: 10px 41px 10px 41px;
+	box-shadow:3px 8px #2a2a2a;
+	border-radius: .2rem;
+    text-decoration:none;
+    background-color: #edece9; 
+}
