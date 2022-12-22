@@ -1,5 +1,6 @@
 package fr.eni.encheres.bll;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import fr.eni.encheres.bo.Article;
@@ -25,7 +26,7 @@ public class EnchereManager {
 		
 	}
 	
-	public void ajouterEnchere(Enchere enchere) {
+	public void ajouterEnchere(Enchere enchere) throws SQLException {
 		DAOFactory.getEnchereDAO().insert(enchere);
 	}
 	
