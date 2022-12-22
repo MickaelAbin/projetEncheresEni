@@ -4,11 +4,6 @@ body{
 	overflow: scroll;	
 }
 
-img{
-	position:absolute;	
-	height: 100vh;
-    width: 100%;
-}
 
 .liste{
 	font-family: Verdana, Geneva, Tahoma, sans-serif;

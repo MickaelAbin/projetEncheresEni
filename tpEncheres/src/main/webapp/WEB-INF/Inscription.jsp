@@ -11,65 +11,63 @@
 <body>
 
 	<%@ include file="Header.jsp" %>
-	<aside>
-    	<img src="./images/backgroundTPencheres .jpg" alt="background">
-    </aside>
+	
 
 
 		<h2>Inscription</h2>
 
 		<form  action="<%=request.getContextPath()%>/Inscription"  method="POST" >
 		    <div>			
-				<input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" required class="liste1"/>
+				<input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" value="${requestScope.pseudo }" required class="liste1"/>
 		    </div>
 		    
 			<br />
 			<br />
 			
 			<div>
-				<input type="text" name="nom" id="nom" placeholder="Nom" required class="liste1" />
+				<input type="text" name="nom" id="nom" placeholder="Nom" value="${requestScope.nom }" required class="liste1" />
 		    </div>
 			
 			<br />
 			<br />
 			
 			<div>
-				<input type="text" name="prenom" id="prenom" placeholder="Prenom"  required class="liste1"/>
+				<input type="text" name="prenom" id="prenom" placeholder="Prenom" value="${requestScope.prenom }"  required class="liste1"/>
 		    </div>
 			
 			<br />
 			<br />
 			
 			<div>
-				<input type="text" name="email" id="email" placeholder="exemple@.com"  required class="liste1"/>
+				<input type="text" name="email" id="email" placeholder="exemple@eni.com" value="${requestScope.email }" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required class="liste1"/>
 		    </div>
 			
 			<br />
 			<br />
 			
 			<div>
-				<input type="text" name="telephone" id="telephone" placeholder="Tel mobile" required class="liste1"/>
+				<input type="text" name="telephone" id="telephone" placeholder="Tel:0601XXXXXX" value="${requestScope.telephone }" pattern="[0-9]{10}" required class="liste1"/>
 		    </div>
 			
 			<br />
 			<br />
 			
 			<div>
-				<input type="text" name="rue" id="rue" placeholder="Rue"  required class="liste2" />
+				<input type="text" name="rue" id="rue" placeholder="Rue" value="${requestScope.rue }" required class="liste2" />
 		    </div>
 			
 			<br />
 			<br />
 			
 			<div>
-				<input type="text" name="codePostal" id="codePostal" placeholder="Code Postal" required class="liste2" />
+				<input type="text" name="codePostal" id="codePostal" placeholder="Code Postal" value="${requestScope.codePostal }" required class="liste2" />
 		    </div>
 			
 			<br />
 			<br />
 			
 			<div>
-				<input type="text" name="ville" id="ville" placeholder="Ville" required class="liste2" />
+				<input type="text" name="ville" id="ville" placeholder="Ville" value="${requestScope.ville }" required class="liste2" />
 		    </div>
 			
 			<br />
@@ -83,9 +81,10 @@
 			<br />
 			
 			<div>
-				<input type="password" name="remotDePasse" id="remotDePasse" placeholder="Confirmation" required class="liste2" />
-			
+				<input type="password" name="reMotDePasse" id="reMotDePasse" placeholder="Confirmation" required class="liste2" />
+			     
 		    </div>
+		        <c:if test="${!empty errorMDP }">${errorMDP }</c:if>
 		    
 			<br />
 			<br />

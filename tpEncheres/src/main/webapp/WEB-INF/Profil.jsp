@@ -12,10 +12,6 @@
 <body>
 	<%@ include file="Header.jsp"%>
 	
-	<aside>
-    	<img src="./images/backgroundTPencheres .jpg" alt="background">
-    </aside>
-	
 		<h2>Profil</h2>
 		
 		<div class="liste">
