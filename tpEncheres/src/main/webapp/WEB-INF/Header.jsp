@@ -19,6 +19,7 @@
     		<a href="<%=request.getContextPath()%>/Connexion">Se connecter</a>
 		</c:if>
     	
+    	
 	</div>
 		
 </header>
