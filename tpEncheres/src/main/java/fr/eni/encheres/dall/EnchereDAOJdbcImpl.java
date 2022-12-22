@@ -50,9 +50,9 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 	}
 
 	@Override
-	public void insert(Enchere enchere) {
-
-		try (Connection cnx = ConnectionProvider.getConnection()) {
+	public void insert(Enchere enchere) throws SQLException {
+		Connection cnx = ConnectionProvider.getConnection();
+		//try (Connection cnx = ConnectionProvider.getConnection()) {
 			
 			PreparedStatement pStmt = cnx.prepareStatement(SEARCH_PLUS_GROSSE_ENCHERE);
 			pStmt.setInt(1,enchere.getNoArticle().getNombreArticle());
@@ -98,9 +98,9 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 			pStmt5.executeUpdate();
 			
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		//} catch (SQLException e) {
+		//	e.printStackTrace();
+		//}
 
 	
 		}

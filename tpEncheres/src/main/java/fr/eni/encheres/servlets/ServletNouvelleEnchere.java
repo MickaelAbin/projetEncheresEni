@@ -1,6 +1,7 @@
 package fr.eni.encheres.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
@@ -57,14 +58,23 @@ public class ServletNouvelleEnchere extends HttpServlet {
 			if (credit >= prix) {
 		        
 		        Article article = new Article(idArticle);
-		       
+		        utilisateurSession.setCredit(credit-prix);
+		        session.setAttribute("utilisateurConnecte", utilisateurSession);
 		        
 		        LocalDate dateDuJour = LocalDate.now();
 		        Enchere enchere = new Enchere(utilisateurSession,article,dateDuJour,prix);
 				
-		        EnchereManager.getInstance().ajouterEnchere(enchere);
-		        session.removeAttribute("idArticle");
-				response.sendRedirect("/tpEncheres/Accueil");
+		        try {
+					EnchereManager.getInstance().ajouterEnchere(enchere);
+				
+				} catch (SQLException e) {
+					session.setAttribute("erreurCredit", "une erreur est survenue");
+					response.sendRedirect(url);
+					e.printStackTrace();
+					return;
+				}
+		      session.removeAttribute("idArticle");
+			response.sendRedirect("/tpEncheres/Accueil");
 				
 				
 			}else {
