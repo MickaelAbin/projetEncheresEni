@@ -33,12 +33,15 @@ public class ServletAccueil extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
+		//permet d'enlever l'erreur credit si on retourne a l'accueil (en cliquant sur le bouton accueil ou en validant l'enchere avec suffisament de crédit)
+		session.removeAttribute("erreurCredit");
+		
 		//permet de recuperer toutes les catégories 
         List<Categorie> listeCategories = CategorieManager.getInstance().selectAll();
         session.setAttribute("listeCategories", listeCategories);
         List<Article> articles = new ArrayList<>();
 		
-//        articles = ArticleManager.getInstance().affichageVente();
+        // permet de recuperer les articles en ventes en fonction de la catégorie précédement choisi
         if (session.getAttribute("rechercheCategorie")== null) {
         	articles = ArticleManager.getInstance().affichageVente();
         

@@ -26,7 +26,8 @@ public class ServletsInscription extends HttpServlet {
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utilisateur utilisateur = new Utilisateur(
+        int credit = 100;
+    	Utilisateur utilisateur = new Utilisateur(
                request.getParameter("pseudo"),
                request.getParameter("nom"),
                request.getParameter("prenom"),
@@ -35,23 +36,24 @@ public class ServletsInscription extends HttpServlet {
                request.getParameter("rue"),
                request.getParameter("codePostal"),
                request.getParameter("ville"),
-               request.getParameter("motDePasse")
+               request.getParameter("motDePasse"),
+               credit //initialisation des crédits a 100
                );
         
-   try {
-	    
-	     UtilisateurManager.getInstance().ajouterUtilisateur(utilisateur);
-                
-                HttpSession session = request.getSession();
-                session.setAttribute("utilisateurConnecte",utilisateur);
-             
-                this.getServletContext().getRequestDispatcher("/WEB-INF/Accueil.jsp").forward(request, response);
-            
-            
-        } catch(IOException e) {
-        	e.printStackTrace();
-        
-        }
+	   try {
+		    
+		     UtilisateurManager.getInstance().ajouterUtilisateur(utilisateur);
+	                
+	                HttpSession session = request.getSession();
+	                session.setAttribute("utilisateurConnecte",utilisateur);
+	             
+	                this.getServletContext().getRequestDispatcher("/WEB-INF/Accueil.jsp").forward(request, response);
+	            
+	            
+	        } catch(IOException e) {
+	        	e.printStackTrace();
+	        
+	        }
      }
  }
 

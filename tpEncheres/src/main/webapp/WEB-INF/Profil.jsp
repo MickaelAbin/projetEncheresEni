@@ -28,6 +28,7 @@
 		<p> Rue : ${utilisateurConnecte.rue } </p>
 		<p> Code Postal : ${utilisateurConnecte.codePostal } </p>
 		<p> Ville : ${utilisateurConnecte.ville } </p>
+		<p> Crédit : ${utilisateurConnecte.credit } </p>
 		<a href="/tpEncheres/ServletModifierProfil">Modifier</a>
 		<a href="/tpEncheres/ServletValiderSupression">Supprimer</a>
 		</div>

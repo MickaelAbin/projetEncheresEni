@@ -46,26 +46,38 @@ public class ServletNouvelleEnchere extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
         
+		int idArticle = (int) session.getAttribute("idArticle");
+		String url = "/tpEncheres/ServletDetailVente?id=" + String.valueOf(idArticle);
 		if (session.getAttribute("utilisateurConnecte") != null) {
-			Utilisateur utilisateurSession = (Utilisateur) session.getAttribute("utilisateurConnecte");
-	        Utilisateur acheteur = new Utilisateur(utilisateurSession.getNoUtilisateur());
-	        int idArticle =  Integer.parseInt(request.getParameter("IdArticle"));
-	        Article article = new Article(idArticle);
-	       
-	        int prix = Integer.parseInt(request.getParameter("PRIX"));
-	        LocalDate dateDuJour = LocalDate.now();
-	        Enchere enchere = new Enchere(acheteur,article,dateDuJour,prix);
+			int prix = Integer.parseInt(request.getParameter("PRIX"));
 			
-	        EnchereManager.getInstance().ajouterEnchere(enchere);
-	        session.removeAttribute("idArticle");
-			response.sendRedirect("/tpEncheres/Accueil");
-		}
+			Utilisateur utilisateurSession = (Utilisateur) session.getAttribute("utilisateurConnecte");
+			int credit = utilisateurSession.getCredit();
+			
+			if (credit >= prix) {
+		        
+		        Article article = new Article(idArticle);
+		       
+		        
+		        LocalDate dateDuJour = LocalDate.now();
+		        Enchere enchere = new Enchere(utilisateurSession,article,dateDuJour,prix);
+				
+		        EnchereManager.getInstance().ajouterEnchere(enchere);
+		        session.removeAttribute("idArticle");
+				response.sendRedirect("/tpEncheres/Accueil");
+				
+				
+			}else {
+				session.setAttribute("erreurCredit", "Vous n'avez pas assez de crédit");
+				response.sendRedirect(url);
+			}
+			
+	        
+		} 
 		else {
-			int idArticle = (int) session.getAttribute("idArticle");
-			String url = "/tpEncheres/ServletDetailVente?id=" + String.valueOf(idArticle);
-			//System.out.println(url);
 			response.sendRedirect(url);
 		}
+		
         
 	}
 

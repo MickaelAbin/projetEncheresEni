@@ -15,9 +15,9 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private final static String SELECT_ALL = "Select * from Utilisateurs";
 	private final static String DELETE = "DELETE FROM Utilisateurs WHERE no_utilisateur=?;";
 	private final static String SELECT_BY_ID = "Select * FROM Utilisateurs WHERE no_utilisateur=?;";
-	private final static String AJOUTER_UTILISATEUR = "insert into UTILISATEURS values (?,?,?,?,?,?,?,?,?,100,0);";
+	private final static String AJOUTER_UTILISATEUR = "insert into UTILISATEURS values (?,?,?,?,?,?,?,?,?,?,0);";
 	private final static String SELECT_BY_PSEUDO = "Select * FROM Utilisateurs WHERE pseudo=?;";
-	private final static String SQL_UPDATE = "update UTILISATEURS set pseudo=?,nom=?,prenom=?,email=?,telephone=?,rue=?,code_postal=?,ville=?,mot_de_passe=? WHERE no_utilisateur=?";
+	private final static String SQL_UPDATE = "update UTILISATEURS set pseudo=?,nom=?,prenom=?,email=?,telephone=?,rue=?,code_postal=?,ville=?,mot_de_passe=?, credit=? WHERE no_utilisateur=?";
 	public List<Utilisateur> selectAll() {
         List<Utilisateur> listes = new ArrayList<>();
         try(Connection cnx = ConnectionProvider.getConnection()) {
@@ -97,6 +97,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			pStmt.setString(7, utilisateur.getCodePostal());
 			pStmt.setString(8, utilisateur.getVille());
 			pStmt.setString(9, utilisateur.getMotDePasse());
+			pStmt.setInt(10, utilisateur.getCredit());
 			pStmt.executeUpdate();			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -157,8 +158,9 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
                 String rue = rs.getString("rue");
                 String codePostal = rs.getString("code_postal");
                 String ville = rs.getString("ville");
+                int credit = rs.getInt("credit");
                 
-                utilisateur = new Utilisateur(idUtilisateur, pseudo, nom, prenom,email,telephone,rue,codePostal,ville);
+                utilisateur = new Utilisateur(idUtilisateur, pseudo, nom, prenom,email,telephone,rue,codePostal,ville,credit);
                 
             }
             
