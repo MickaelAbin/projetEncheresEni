@@ -17,7 +17,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private final static String SELECT_BY_ID = "Select * FROM Utilisateurs WHERE no_utilisateur=?;";
 	private final static String AJOUTER_UTILISATEUR = "insert into UTILISATEURS values (?,?,?,?,?,?,?,?,?,?,0);";
 	private final static String SELECT_BY_PSEUDO = "Select * FROM Utilisateurs WHERE pseudo=?;";
-	private final static String SQL_UPDATE = "update UTILISATEURS set pseudo=?,nom=?,prenom=?,email=?,telephone=?,rue=?,code_postal=?,ville=?,mot_de_passe=?, credit=? WHERE no_utilisateur=?";
+	private final static String SQL_UPDATE = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? WHERE no_utilisateur =?;";
 	public List<Utilisateur> selectAll() {
         List<Utilisateur> listes = new ArrayList<>();
         try(Connection cnx = ConnectionProvider.getConnection()) {
@@ -185,7 +185,9 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			preparedStatement.setString(7, utilisateur.getCodePostal());
 			preparedStatement.setString(8, utilisateur.getVille());
 			preparedStatement.setString(9, utilisateur.getMotDePasse());
- 
+			preparedStatement.setInt(10, utilisateur.getNoUtilisateur());
+			
+			
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
         	e.printStackTrace();

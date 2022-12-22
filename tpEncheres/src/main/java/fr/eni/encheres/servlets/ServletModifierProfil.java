@@ -33,6 +33,7 @@ public class ServletModifierProfil extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		String pseudo = request.getParameter("pseudo");
         String nom = request.getParameter("nom");
         String prenom = request.getParameter("prenom");
@@ -42,13 +43,15 @@ public class ServletModifierProfil extends HttpServlet {
         String codePostal = request.getParameter("codePostal");
         String ville = request.getParameter("ville");
         String motDePasse = request.getParameter("motDePasse");
-        Utilisateur utilisateur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse);
+        int idUtilisateur = ((Utilisateur) session.getAttribute("utilisateurConnecte")).getNoUtilisateur();
+        int credit = ((Utilisateur) session.getAttribute("utilisateurConnecte")).getCredit();
+        Utilisateur utilisateur = new Utilisateur(idUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit);
         
         try {
     	    
-   	     UtilisateurManager.getInstance().ajouterUtilisateur(utilisateur);
+   	     UtilisateurManager.getInstance().modifier(utilisateur);
                    
-                   HttpSession session = request.getSession();
+                   
                    session.setAttribute("utilisateurConnecte",utilisateur);
                 
                    this.getServletContext().getRequestDispatcher("/WEB-INF/Accueil.jsp").forward(request, response);

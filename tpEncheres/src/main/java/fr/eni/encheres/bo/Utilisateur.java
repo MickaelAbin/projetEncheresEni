@@ -299,6 +299,8 @@ public int getCredit() {
 				.append(", credit=").append(credit).append(", administrateur=").append(administrateur).append("]");
 		return builder.toString();
 	}
+
+
     
     
     
