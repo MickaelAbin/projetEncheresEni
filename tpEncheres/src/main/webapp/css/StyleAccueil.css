@@ -10,16 +10,49 @@ h2 {
 		
 }
 
-.listeArticle{
-	width: 90%;
-	display: flex; 
-	flex-wrap: wrap;
-	flex-direction: row;
-	align-content: center
+.Enchere {
+	top: 20ch;
+	position: relative;
+	margin-left: 3ch;
+	width: 500px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
 }
 
-.article{
-	border: 1px solid black; 
-	background-color: lightgray;
-	width: 400px;
+.rechercher{
+	position: relative;
+	width: 13%;
+	height: 70px;
+	top: 2ch;
+	margin-left: 50ch;
+    color:#000;
+    box-shadow:3px 8px #2a2a2a;
+}
+
+.search{
+	position: relative;
+	width: 13%;
+	height: 40px;
+	top: 20ch;
+	margin-left: 3ch;
+}
+
+.Categorie{
+	position: relative;
+	top: 10ch;
+	margin-left: 3ch;
+}
+
+.liste1{
+	position: relative;
+	margin-left: 3ch;
+	bottom: 5ch;
+}
+
+.liste2{
+	position: relative;
+	margin-left: 3ch;
+	bottom: 5ch;
 }

@@ -1,59 +1,48 @@
 @charset "UTF-8";
-
 body{
-	overflow: scroll;		
+    overflow: scroll;       
 }
-
 img{
-	position:absolute;	
-	height: 100%;
+    position:absolute;  
+    height: 100%;
     width: 100%;
 }
-
 input, .bt1, .bt2, .liste1, .liste2{
     display: inline-block;
     width: 160px;
     height: 20px;
 }
 .liste1{
-	 margin-left: 80ch;
-	 position: relative;
+     margin-left: 80ch;
+     position: relative;
      top: 20ch;
-	
 }
-
 .liste2{
-	margin-left: 154ch;
+    margin-left: 154ch;
     position: relative;
     bottom: 21ch;
-	
 }
 .bt1{
-	position: relative;
-	width: 13%;
-	height: 60px;
-	bottom: 20ch;
-	margin-left: 80ch;
+    position: relative;
+    width: 13%;
+    height: 60px;
+    bottom: 20ch;
+    margin-left: 80ch;
     color:#000;
     box-shadow:3px 8px #2a2a2a;
-	
 }
 .bt2{
-	position: relative;
-	width: 13%;
-	height: 60px;
-	bottom: 20ch;
-	margin-left: 30ch;
-	color:#000;
+    position: relative;
+    width: 13%;
+    height: 60px;
+    bottom: 20ch;
+    margin-left: 30ch;
+    color:#000;
     box-shadow:3px 8px #2a2a2a;
-	
-	
 }
-   
-
 h2{
-	position: relative;
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: relative;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.75rem;
     margin: 0 0 .5rem 0;
     font-weight: 700;
