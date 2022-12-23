@@ -73,9 +73,10 @@
 			<input type="submit" name="connexion" value="Rechercher"/>
 		</form>
 	    
-	    <div style="width: 90%;display: flex; flex-wrap: wrap;
-	flex-direction: row;
-	justify-content: center">
+	    <div style="width: 90%;display: flex; 
+	    	flex-wrap: wrap;
+			flex-direction: row;
+			justify-content: center">
 	    	<c:if test="${empty listeArticles }">listes articles vide</c:if>
 			<c:forEach var="articleVente" items="${sessionScope.listeArticles }" >
 				<div style= "border: 1px solid black; background-color: lightgray; width: 40%; margin:10px; align-self: center;" classe="article">
