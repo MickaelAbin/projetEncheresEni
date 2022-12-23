@@ -3,8 +3,6 @@
  */
 package fr.eni.encheres.dall;
 
-import java.sql.Connection;
-
 import fr.eni.encheres.servlets.Connexion;
 
 /**
@@ -13,21 +11,21 @@ import fr.eni.encheres.servlets.Connexion;
  */
 public class DAOFactory {
 
-	public static ArticleDAOjdbcImpl getArticlesDAO() {
+	public static ArticleDAO getArticlesDAO() {
 		return new ArticleDAOjdbcImpl();
 	}
 	
-	public static EnchereDAOJdbcImpl getEnchereDAO() {
+	public static EnchereDAO getEnchereDAO() {
 		return new EnchereDAOJdbcImpl();
 	}
 	
-	public static UtilisateurDAOJdbcImpl getUtilisateurDAO() {
+	public static UtilisateurDAO getUtilisateurDAO() {
 		return new UtilisateurDAOJdbcImpl();
 	}
-	public static CategorieDAOJdbcImpl getCategorieDAO() {
+	public static CategorieDAO getCategorieDAO() {
 		return new CategorieDAOJdbcImpl();
 	}
-	public static RetraitDAOJdbcImpl getRetraitDAO() {
+	public static RetraitDAO getRetraitDAO() {
 		return new RetraitDAOJdbcImpl();
 	}
 
