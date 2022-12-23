@@ -11,21 +11,21 @@ import fr.eni.encheres.servlets.Connexion;
  */
 public class DAOFactory {
 
-	public static ArticleDAO getArticlesDAO() {
+	public static ArticleDAOjdbcImpl getArticlesDAO() {
 		return new ArticleDAOjdbcImpl();
 	}
 	
-	public static EnchereDAO getEnchereDAO() {
+	public static EnchereDAOJdbcImpl getEnchereDAO() {
 		return new EnchereDAOJdbcImpl();
 	}
 	
-	public static UtilisateurDAO getUtilisateurDAO() {
+	public static UtilisateurDAOJdbcImpl getUtilisateurDAO() {
 		return new UtilisateurDAOJdbcImpl();
 	}
-	public static CategorieDAO getCategorieDAO() {
+	public static CategorieDAOJdbcImpl getCategorieDAO() {
 		return new CategorieDAOJdbcImpl();
 	}
-	public static RetraitDAO getRetraitDAO() {
+	public static RetraitDAOJdbcImpl getRetraitDAO() {
 		return new RetraitDAOJdbcImpl();
 	}
 
