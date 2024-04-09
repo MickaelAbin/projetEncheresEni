@@ -1,9 +1,9 @@
 Projet Java EE ENI 
 
 
-Language : Java EE/
-BDD : SQL server/
-IDE : Eclipse
+Language : Java EE /
+ BDD : SQL server /
+ IDE : Eclipse
 
 
 L’association « Les objets sont nos amis » désire monter une plateforme web pour permettre 
