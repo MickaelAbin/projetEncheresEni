@@ -1,10 +1,8 @@
 Projet Java EE ENI 
 
 
-Language : Java EE
-
-BDD : SQL server
-
+Language : Java EE/
+BDD : SQL server/
 IDE : Eclipse
 
 
